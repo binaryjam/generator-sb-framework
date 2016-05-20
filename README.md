@@ -25,7 +25,7 @@ yo sb-framework
 
 ## License
 
-Apache-2.0 © [binaryjam]()
+MIT © [binaryjam]()
 
 
 [npm-image]: https://badge.fury.io/js/generator-sb-framework.svg
