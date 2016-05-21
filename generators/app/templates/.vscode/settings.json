@@ -1,0 +1,32 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.DS_Store": true,
+        "node_modules": true,
+        //Hide parts of the VS project till the automatic bits can build xml and wsp
+        //on their own/*
+        "**/bin": true,
+        "**/Features": true,
+        "**/obj": true,
+        "**/Package": true,
+        "**/pkg": true,
+        "**/pkgobj": true,
+        "**/Properties": true,
+        "**/WebPartModule": true,
+        "**/*.csproj.*": true,
+        "**/*.csproj": true,
+        "**/*.wsp": true,
+        "**/*.sln": true,
+        "**/.vs": true,
+        "**/.container": true,
+        "**/buildSP": true,
+        "**/bs-config.json": true,
+        "**/jsconfig.json": true,
+        "**/buildlocal": true,
+        "**/SandBoxSharePointFramework":true
+    }
+}

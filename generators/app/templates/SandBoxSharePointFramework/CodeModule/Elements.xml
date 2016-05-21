@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Elements 
+  xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="CodeModule">
+    <File ReplaceContent="TRUE" Path="CodeModule\bundle.css" Url="SBFrameWork/SandboxFrameworkPart/bundle.css"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\images\asteroids.jpg" Url="SBFrameWork/SandboxFrameworkPart/images/asteroids.jpg"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\bundle.js" Url="SBFrameWork/SandboxFrameworkPart/bundle.js"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\images\galaxy.jpg" Url="SBFrameWork/SandboxFrameworkPart/images/galaxy.jpg"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\loader.htm" Url="SBFrameWork/SandboxFrameworkPart/loader.htm"/>
+  </Module>
+</Elements>

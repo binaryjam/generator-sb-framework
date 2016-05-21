@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProjectItem 
+  xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel" Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="CodeModule\" Type="ElementManifest"/>
+    <ProjectItemFile Source="bundle.css" Target="CodeModule\" Type="ElementFile"/>
+    <ProjectItemFile Source="images\asteroids.jpg" Target="CodeModule\images\" Type="ElementFile"/>
+    <ProjectItemFile Source="bundle.js" Target="CodeModule\" Type="ElementFile"/>
+    <ProjectItemFile Source="images\galaxy.jpg" Target="CodeModule\images\" Type="ElementFile"/>
+    <ProjectItemFile Source="loader.htm" Target="CodeModule\" Type="ElementFile"/>
+  </Files>
+</ProjectItem>

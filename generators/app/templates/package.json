@@ -1,0 +1,33 @@
+{
+  "name": "sandboxsharepointframework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binaryjam/SandBoxSharePointFrameworkSln.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/binaryjam/SandBoxSharePointFrameworkSln/issues"
+  },
+  "homepage": "https://github.com/binaryjam/SandBoxSharePointFrameworkSln#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-fn": "0.0.0",
+    "gulp-msbuild": "^0.3.2",
+    "gulp-pretty-data": "^0.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglyfly": "^1.4.2",
+    "gulp-xml-editor": "^2.2.1",
+    "lite-server": "^2.2.0"
+  }
+}
