@@ -1,3 +1,5 @@
+#A Work in progress at the minute, nearly done though, only been on it since last night (20/5/2016)
+
 # generator-sb-framework [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > a test generator
 
