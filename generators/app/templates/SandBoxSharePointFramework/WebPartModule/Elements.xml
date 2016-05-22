@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="WebPartModule" List="113" Url="_catalogs/wp">
-    <File ReplaceContent="TRUE" Path="WebPartModule\SandboxFrameworkWebPart.dwp" Url="SandboxFrameworkWebPart.dwp" Type="GhostableInLibrary" >
+    <File ReplaceContent="TRUE" Path="WebPartModule\<%= webPartName %>.dwp" Url="<%= webPartName %>.dwp" 
+    Type="GhostableInLibrary" >
       <Property Name="Group" Value="Custom" />
     </File>
   </Module>
