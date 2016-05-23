@@ -7,8 +7,8 @@
     <ProjectGuid>{<%=projectGuid%>}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SandBoxSharePointFramework</RootNamespace>
-    <AssemblyName>SandBoxSharePointFramework</AssemblyName>
+    <RootNamespace><%=projectName%></RootNamespace>
+    <AssemblyName><%=projectName%></AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetOfficeVersion>15.0</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
@@ -42,16 +42,7 @@
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="Microsoft.SharePoint" />
-    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -60,7 +51,7 @@
       <SharePointProjectItemId>{<%=codeModuleSpdataId%>}</SharePointProjectItemId>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Features\<%=webPartName%>\SandboxFrameworkPart.feature">
+    <None Include="Features\<%=webPartName%>\<%=webPartName%>.feature">
       <FeatureId>{<%=featureRefId%>}</FeatureId>
     </None>
     <None Include="Package\Package.package">
@@ -84,8 +75,8 @@
     <Content Include="CodeModule\images\asteroids.jpg" />
     <Content Include="CodeModule\images\galaxy.jpg" />
     <Content Include="CodeModule\loader.htm" />
-    <Content Include="Features\<%=webPartName%>\SandboxFrameworkPart.Template.xml">
-      <DependentUpon>SandboxFrameworkPart.feature</DependentUpon>
+    <Content Include="Features\<%=webPartName%>\<%=webPartName%>.Template.xml">
+      <DependentUpon><%=webPartName%>.feature</DependentUpon>
     </Content>
     <Content Include="WebPartModule\Elements.xml" />
   </ItemGroup>

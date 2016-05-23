@@ -7,16 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lite-server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/binaryjam/SandBoxSharePointFrameworkSln.git"
-  },
+ 
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/binaryjam/SandBoxSharePointFrameworkSln/issues"
-  },
-  "homepage": "https://github.com/binaryjam/SandBoxSharePointFrameworkSln#readme",
+  
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",

@@ -38,7 +38,7 @@ gulp.task('cleansp1', function () {
         .pipe(clean());
 });
 gulp.task('cleansp2', ['cleansp1'], function () {
-    return gulp.src('./SandBoxSharePointFramework/CodeModule/**/*.{jpg,png,css,js,htm,html}', {
+    return gulp.src('./<%=projectName%>/CodeModule/**/*.{jpg,png,css,js,htm,html}', {
         read: false
     })
         .pipe(clean());
@@ -60,20 +60,20 @@ gulp.task('buildcssboth', ['cleanlocal', 'cleansp'], function () {
             title: 'cssbuild:'
         }))
         .pipe(concat('bundle.css'))
-        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/SandboxFrameworkPart'))
+        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/<%=webPartName%>'))
         .pipe(gulp.dest('./WebComponents/buildSP'));
 });
 
 gulp.task('buildjsboth', ['cleanlocal', 'cleansp'], function () {
     return gulp.src(['./WebComponents/src/js/*.js'])
         .pipe(concat('bundle.js'))
-        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/SandboxFrameworkPart'))
+        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/<%=webPartName%>'))
         .pipe(gulp.dest('./WebComponents/buildSP'));
 });
 
 gulp.task('buildimgboth', ['cleanlocal', 'cleansp'], function () {
     return gulp.src(['./WebComponents/src/images/*.*'])
-        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/SandboxFrameworkPart/images'))
+        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/<%=webPartName%>/images'))
         .pipe(gulp.dest('./WebComponents/buildSP/images'));
 
 });
@@ -91,14 +91,14 @@ gulp.task('packagesp', ['prettify1', 'prettify2', 'prettify3']);
 gulp.task('packageXmlFiles', ['buildhtmlsp', 'buildjsboth', 'buildcssboth'], function () {
 
     return gulp.src(['./WebComponents/buildSP/*.*'])
-        .pipe(gulp.dest('./SandBoxSharePointFramework/CodeModule'))
+        .pipe(gulp.dest('./<%=projectName%>/CodeModule'))
         .pipe(gulpfn(function (file) {
             var fname = file.path.substring(file.base.length + 1);
             var obj = {
                 "name": fname,
                 srcprefix: "",
                 "path": 'CodeModule\\',
-                "Url": "SBFrameWork/SandboxFrameworkPart/" + fname
+                "Url": "SBFrameWork/<%=webPartName%>/" + fname
             }
             elementFiles.push(obj);
             console.log("     AddToArr:" + obj.name + " :: " + obj.path);
@@ -107,21 +107,21 @@ gulp.task('packageXmlFiles', ['buildhtmlsp', 'buildjsboth', 'buildcssboth'], fun
 
 gulp.task('packageImages', ['buildimgboth'], function () {
     return gulp.src(['./WebComponents/buildSP/images/*.*'])
-        .pipe(gulp.dest('./SandBoxSharePointFramework/CodeModule/images'))
+        .pipe(gulp.dest('./<%=projectName%>/CodeModule/images'))
         .pipe(gulpfn(function (file) {
             var fname = file.path.substring(file.base.length + 1);
             elementFiles.push({
                 "name": fname,
                 srcprefix: 'images\\',
                 path: 'CodeModule\\images\\',
-                "Url": "SBFrameWork/SandboxFrameworkPart/images/" + fname
+                "Url": "SBFrameWork/<%=webPartName%>/images/" + fname
             });
         }));
 
 });
 
 gulp.task('packageElements', ['packageXmlFiles', 'packageImages'], function () {
-    return gulp.src("./SandBoxSharePointFramework/CodeModule/Elements.xml")
+    return gulp.src("./<%=projectName%>/CodeModule/Elements.xml")
         .pipe(xeditor(function (xml, xmljs) {
             var node = xml.find('//xmlns:File', 'http://schemas.microsoft.com/sharepoint/');
             for (var i = 0; i < node.length; i++) {
@@ -148,7 +148,7 @@ gulp.task('packageElements', ['packageXmlFiles', 'packageImages'], function () {
 
             return xml;
         }))
-        .pipe(gulp.dest("./SandBoxSharePointFramework/CodeModule/", {
+        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
             "overwrite": true
         }));
 });
@@ -157,7 +157,7 @@ gulp.task('packageElements', ['packageXmlFiles', 'packageImages'], function () {
 
 gulp.task('packagespdata', ['packageXmlFiles', 'packageImages'], function () {
     //Clear out all the File objects in the XML
-    return gulp.src("./SandBoxSharePointFramework/CodeModule/SharePointProjectItem.spdata")
+    return gulp.src("./<%=projectName%>/CodeModule/SharePointProjectItem.spdata")
         .pipe(xeditor(function (xml, xmljs) {
             var node = xml.find('//xmlns:ProjectItemFile[@Type="ElementFile"]', "http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel");
             for (var i = 0; i < node.length; i++) {
@@ -181,7 +181,7 @@ gulp.task('packagespdata', ['packageXmlFiles', 'packageImages'], function () {
 
             return xml;
         }))
-        .pipe(gulp.dest("./SandBoxSharePointFramework/CodeModule/", {
+        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
             "overwrite": true
         }));
 });
@@ -189,7 +189,7 @@ gulp.task('packagespdata', ['packageXmlFiles', 'packageImages'], function () {
 gulp.task('packagecsproj', ['packageElements', 'packagespdata'], function () {
 
     //Clear out all the File objects in the XML
-    return gulp.src("./SandBoxSharePointFramework/SandBoxSharePointFramework.csproj")
+    return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
         .pipe(xeditor(function (xml, xmljs) {
             console.log("TODO:Edit the csproj file with the extra files in the ItemGroup");
             var node = xml.get('//xmlns:ItemGroup[xmlns:Content]', "http://schemas.microsoft.com/developer/msbuild/2003");
@@ -252,29 +252,29 @@ gulp.task('packagecsproj', ['packageElements', 'packagespdata'], function () {
             }
             return xml;
         }))
-        .pipe(gulp.dest("./SandBoxSharePointFramework/", {
+        .pipe(gulp.dest("./<%=projectName%>/", {
             "overwrite": true
         }));
 });
 
 gulp.task('prettify1', ['packageElements'], function () {
-    return gulp.src("./SandBoxSharePointFramework/CodeModule/Elements.xml")
+    return gulp.src("./<%=projectName%>/CodeModule/Elements.xml")
         .pipe(prettyData({
             type: 'prettify'
         }))
-        .pipe(gulp.dest("./SandBoxSharePointFramework/CodeModule/", {
+        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
             "overwrite": true
         }));
 });
 
 gulp.task('prettify2', ['packagespdata'], function () {
-    return gulp.src("./SandBoxSharePointFramework/CodeModule/SharePointProjectItem.spdata")
+    return gulp.src("./<%=projectName%>/CodeModule/SharePointProjectItem.spdata")
         .pipe(rename("SharePointProjectItem.spdata.xml"))
         .pipe(prettyData({
             type: 'prettify'
         }))
         .pipe(rename("SharePointProjectItem.spdata"))
-        .pipe(gulp.dest("./SandBoxSharePointFramework/CodeModule/", {
+        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
             "overwrite": true
         }));
 });
@@ -282,20 +282,20 @@ gulp.task('prettify2', ['packagespdata'], function () {
 //If we get problems with unidentified package items then delete the .suo files in a new task item
 
 gulp.task('prettify3', ['packagecsproj'], function () {
-    return gulp.src("./SandBoxSharePointFramework/SandBoxSharePointFramework.csproj")
-        .pipe(rename("SandBoxSharePointFramework.csproj.xml"))
+    return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
+        .pipe(rename("<%=projectName%>.csproj.xml"))
         .pipe(prettyData({
             type: 'prettify'
         }))
-        .pipe(rename("SandBoxSharePointFramework.csproj"))
-        .pipe(gulp.dest("./SandBoxSharePointFramework/", {
+        .pipe(rename("<%=projectName%>.csproj"))
+        .pipe(gulp.dest("./<%=projectName%>/", {
             "overwrite": true
         }));
 });
 
 
 gulp.task('msbuild', ['packagesp'], function () {
-    return gulp.src("./SandBoxSharePointFramework/SandBoxSharePointFramework.csproj")
+    return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
         .pipe(msbuild({
             targets: ['Package'],
             toolsVersion: 12.0,
@@ -304,6 +304,3 @@ gulp.task('msbuild', ['packagesp'], function () {
         }));
 
 });
-
-
-//    <File ReplaceContent="TRUE" Path="CodeModule\bundle.css" Url="SBFrameWork/SandboxFrameworkPart/bundle.css"/>

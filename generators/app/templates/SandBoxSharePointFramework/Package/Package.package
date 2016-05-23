@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="<%= packageId %>" solutionId="<%= solutionId %>" resetWebServer="false" sharePointProductVersion="15.0" name="SandBoxSharePointFramework" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="<%= packageId %>" solutionId="<%= solutionId %>" resetWebServer="false" sharePointProductVersion="15.0" name="<%=projectName%>" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
   <features>
     <featureReference itemId="<%= featureRefId  %>" />
   </features>

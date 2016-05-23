@@ -27,6 +27,6 @@
         "**/bs-config.json": true,
         "**/jsconfig.json": true,
         "**/buildlocal": true,
-        "**/SandBoxSharePointFramework":true
+        "**/<%=projectName%>":true
     }
 }

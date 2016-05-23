@@ -69,10 +69,10 @@ module.exports = yeoman.Base.extend({
             packageId: packageId, solutionId: solutionId, featureRefId: featureRefId,
             featureId: featureId, codeModuleSpdataId: codeModuleSpdataId,
             webpartModuleSpdataId: webpartModuleSpdataId, projectGuid: projectGuid,
-            bigProjectGuid:bigProjectGuid,
+            bigProjectGuid: bigProjectGuid,
             webPartName: this.props.webPartName,
             wepPartDesc: this.props.webPartDesc,
-            projectName:this.props.projectName
+            projectName: this.props.projectName
         };
 
         this.fs.copy(this.templatePath("*.*"), this.destinationPath(this.props.projectName + 'Sln'), true);
@@ -121,8 +121,9 @@ module.exports = yeoman.Base.extend({
 
 
         //Properties
-        this.fs.copy(this.templatePath("SandBoxSharePointFramework/Properties"),
-            this.destinationPath(this.props.projectName + 'Sln/' + this.props.projectName + "/Properties"), true);
+        this.fs.copyTpl(this.templatePath("SandBoxSharePointFramework/Properties/AssemblyInfo.cs"),
+            this.destinationPath(this.props.projectName + 'Sln/' + this.props.projectName + "/Properties/AssemblyInfo.cs"),
+            templateModel);
 
         //Package
         this.fs.copyTpl(
@@ -157,12 +158,7 @@ module.exports = yeoman.Base.extend({
             ),
             templateModel
         );
-        this.fs.copyTpl(
-            this.templatePath('SandBoxSharePointFramework/SandBoxSharePointFrameWork.Sln'),
-            this.destinationPath(this.props.projectName + 'Sln/' + this.props.projectName + '/' +
-                this.props.projectName + '.Sln'),
-            templateModel
-        );
+        
         this.fs.copyTpl(
             this.templatePath('SandBoxSharePointFramework/SandBoxSharePointFrameWork.csproj.user'),
             this.destinationPath(this.props.projectName + 'Sln/' + this.props.projectName + '/' +
