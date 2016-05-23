@@ -1,7 +1,7 @@
 (function () {
 
     function init() {
-        var x = document.getElementById('sandboxframeworkpart');
+        var x = document.getElementById('<%= webPartName %>');
         x.innerHTML = "Hello World!!!!";
         
         sbfrmcomponent.createImage();
@@ -11,7 +11,7 @@
 
 })();
 var sbfrmcomponent = (function(){
-    var imgPath=_spPageContextInfo.siteAbsoluteUrl + "/SBFrameWork/SandboxFrameworkPart/images";
+    var imgPath=_spPageContextInfo.siteAbsoluteUrl + "/SBFrameWork/<%= webPartName %>/images";
 
     //I dont do anything yet
     function createImage(){

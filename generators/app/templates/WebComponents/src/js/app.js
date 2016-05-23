@@ -1,7 +1,7 @@
 (function () {
 
     function init() {
-        var x = document.getElementById('sandboxframeworkpart');
+        var x = document.getElementById('<%= webPartName %>');
         x.innerHTML = "Hello World!!!!";
         
         sbfrmcomponent.createImage();

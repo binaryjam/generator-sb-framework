@@ -1,5 +1,5 @@
 var sbfrmcomponent = (function(){
-    var imgPath=_spPageContextInfo.siteAbsoluteUrl + "/SBFrameWork/SandboxFrameworkPart/images";
+    var imgPath=_spPageContextInfo.siteAbsoluteUrl + "/SBFrameWork/<%= webPartName %>/images";
 
     //I dont do anything yet
     function createImage(){

@@ -2,13 +2,13 @@
     var css = document.createElement('link');
     css.rel = "stylesheet";
     css.type = "text/css";
-    css.href = _spPageContextInfo.siteAbsoluteUrl + "/SBFrameWork/SandboxFrameworkPart/bundle.css";
+    css.href = _spPageContextInfo.siteAbsoluteUrl + "/SBFrameWork/<%= webPartName %>/bundle.css";
     document.write(css.outerHTML);
     var script = document.createElement('script');
-    script.src = _spPageContextInfo.siteAbsoluteUrl + '/SBFrameWork/SandboxFrameworkPart/bundle.js';
+    script.src = _spPageContextInfo.siteAbsoluteUrl + '/SBFrameWork/<%= webPartName %>/bundle.js';
     document.write(script.outerHTML);
 </script>
 
-<div id="sandboxframeworkpart">
+<div id="<%= webPartName %>">
     <span id="galaxyimg"></span>
 </div>
