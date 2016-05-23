@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
@@ -75,18 +76,29 @@ module.exports = yeoman.Base.extend({
             projectName: this.props.projectName
         };
 
-        this.fs.copy(this.templatePath("*.*"), this.destinationPath(this.props.projectName + 'Sln'), true);
-        //TODO:gulpfile templating
-        this.fs.copy(this.templatePath(".gitignore"), this.destinationPath(this.props.projectName + 'Sln/.gitignore'), true);
-
+        this.fs.copy(this.templatePath("bs-config.json"),
+            this.destinationPath(this.props.projectName + 'Sln/bs-config.json'), true);
+        this.fs.copy(this.templatePath("README.md"),
+            this.destinationPath(this.props.projectName + 'Sln/README.md'), true);
+        this.fs.copy(this.templatePath("jsconfig.json"),
+            this.destinationPath(this.props.projectName + 'Sln/jsconfig.json'), true);
         this.fs.copy(this.templatePath(".vscode"), this.destinationPath(this.props.projectName + 'Sln/.vscode'), true);
 
-        this.fs.copy(this.templatePath("WebComponents/.container"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/.container'), true);
+        this.fs.copyTpl(
+            this.templatePath('{package.json,gulpfile.js,.gitignore}'),
+            this.destinationPath(this.props.projectName + 'Sln/'),
+            templateModel
+        );
+
+
+        this.fs.copyTpl(this.templatePath("WebComponents/.container"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/.container'), templateModel);
+        
         this.fs.copy(this.templatePath("WebComponents/buildSP"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/buildSP'), true);
         this.fs.copy(this.templatePath("WebComponents/src"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src'), true);
 
-        this.fs.copy(this.templatePath("WebComponents/buildlocal/loader.htm"),
-            this.destinationPath(this.props.projectName + 'Sln/WebComponents/buildlocal/loader.htm'), true);
+        this.fs.copyTpl(this.templatePath("WebComponents/buildlocal/loader.htm"),
+            this.destinationPath(this.props.projectName + 'Sln/WebComponents/buildlocal/loader.htm'),
+            templateModel);
 
         this.fs.copy(this.templatePath("WebComponents/buildlocal/SBFrameWork/SandboxFrameworkPart"),
             this.destinationPath(this.props.projectName + 'Sln/WebComponents/buildlocal/' + this.props.projectName + '/' +
@@ -158,7 +170,7 @@ module.exports = yeoman.Base.extend({
             ),
             templateModel
         );
-        
+
         this.fs.copyTpl(
             this.templatePath('SandBoxSharePointFramework/SandBoxSharePointFrameWork.csproj.user'),
             this.destinationPath(this.props.projectName + 'Sln/' + this.props.projectName + '/' +
@@ -168,6 +180,12 @@ module.exports = yeoman.Base.extend({
     },
 
     install: function () {
-        this.npmInstall();
+        this.log(yosay(
+            'You should install the npm modules yourself.\n Thats because I use gulp-xml-editor, which rebuilds a node compartment\n' +
+            'I had to set the correct npm build setting, for me that was\n' +
+            '    TODO: Go find out what I set at work, cos everything just works at home\n\n\n' +
+            'Also notice the gulpfile.  If you have trouble builing then check out the msbuild task and adjust the toolsVersion\n' +
+            "To match your environment,  Ideally use VS2013 or was it 2015, one of them.  I'll know for sure if I get help tesint this project someday"
+        ));
     }
 });

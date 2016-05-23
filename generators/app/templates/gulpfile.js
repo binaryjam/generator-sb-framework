@@ -99,7 +99,7 @@ gulp.task('packageXmlFiles', ['buildhtmlsp', 'buildjsboth', 'buildcssboth'], fun
                 srcprefix: "",
                 "path": 'CodeModule\\',
                 "Url": "SBFrameWork/<%=webPartName%>/" + fname
-            }
+            };
             elementFiles.push(obj);
             console.log("     AddToArr:" + obj.name + " :: " + obj.path);
         }));
@@ -191,7 +191,6 @@ gulp.task('packagecsproj', ['packageElements', 'packagespdata'], function () {
     //Clear out all the File objects in the XML
     return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
         .pipe(xeditor(function (xml, xmljs) {
-            console.log("TODO:Edit the csproj file with the extra files in the ItemGroup");
             var node = xml.get('//xmlns:ItemGroup[xmlns:Content]', "http://schemas.microsoft.com/developer/msbuild/2003");
             if (typeof node !== "undefined") {
                 var children = node.childNodes();
