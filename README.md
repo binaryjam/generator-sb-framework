@@ -5,6 +5,14 @@
 
 ## Installation
 
+Below is the standard yeoman install stuff. I have had issues because of being behind a corporate proxy
+you need to consider settings proxy settings all over the place.
+  
+      npm congig
+      git config
+      .nsprc
+These might only be needed for developing but Im putting it here as a reminder.cd yuo
+
 First, install [Yeoman](http://yeoman.io) and generator-sb-framework using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
