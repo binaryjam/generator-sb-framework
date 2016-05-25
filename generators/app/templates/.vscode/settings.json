@@ -7,26 +7,26 @@
         "**/.svn": true,
         "**/.DS_Store": true,
         "node_modules": true,
-        //Hide parts of the VS project till the automatic bits can build xml and wsp
-        //on their own/*
-        "**/bin": true,
-        "**/Features": true,
-        "**/obj": true,
-        "**/Package": true,
-        "**/pkg": true,
-        "**/pkgobj": true,
-        "**/Properties": true,
-        "**/WebPartModule": true,
-        "**/*.csproj.*": true,
-        "**/*.csproj": true,
-        "**/*.wsp": true,
-        "**/*.sln": true,
-        "**/.vs": true,
-        "**/.container": true,
-        "**/buildSP": true,
         "**/bs-config.json": true,
         "**/jsconfig.json": true,
+        
+        //Contains the outer wrappings of the test HTML for the part and te local test index.html        
+        "**/.container": true,
+
+        //I use these for building the scaffolding for local and sharepoint bundles of the source        
+        "**/buildSP": true,
         "**/buildlocal": true,
-        "**/<%=projectName%>":true
+        //Hide useless parts of the VS project 
+        "**/bin": true,
+        "**/obj": true,
+        "**/pkg": true,
+        "**/pkgobj": true,
+        "**/.vs": true,
+
+        //UnHide this one when you want to look at the built SP project
+        "**/<%=projectName%>":true,
+        
+        //dummy end one to shut up lint
+        "":false
     }
 }

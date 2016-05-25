@@ -4,14 +4,29 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 
-var bigProjectGuid = "FAE04EC0-301F-11D3-BF4B-00C04F79EFBC";
-var projectGuid = "FB6D018C-D5DE-4442-98A5-E700A1D102AB";
-var packageId = "3555ac31-11dd-4174-97c6-a3cbbcfd3bb4";
-var solutionId = "3555ac31-11dd-4174-97c6-a3cbbcfd3bb4";
-var featureRefId = "dd8379d3-79d5-49f2-8d10-6130e79373f6";
-var featureId = "f3dffdb9-ed23-4039-b3fb-1cf76f3bcb24";
-var codeModuleSpdataId = "74e207ce-768d-4e2d-9f0c-8eee41fb88af";
-var webpartModuleSpdataId = "578d7194-3970-48ea-803b-1f97b6fae547";
+var guid = require('uuid');
+
+var bigProjectGuid = "FAE04EC0-301F-11D3-BF4B-00C04F79EFBC"; //Apparently this is a project Type so hard code please.
+
+
+var projectGuid = guid.v4();//"FB6D018C-D5DE-4442-98A5-E700A1D102AB";
+var packageId = guid.v4();//"3555ac31-11dd-4174-97c6-a3cbbcfd3bb4";
+var solutionId = packageId;//"3555ac31-11dd-4174-97c6-a3cbbcfd3bb4";
+
+var featureRefId = guid.v4();//"dd8379d3-79d5-49f2-8d10-6130e79373f6";
+var featureId = guid.v4();// "f3dffdb9-ed23-4039-b3fb-1cf76f3bcb24";
+var codeModuleSpdataId = guid.v4();//"74e207ce-768d-4e2d-9f0c-8eee41fb88af";
+var webpartModuleSpdataId = guid.v4();//"578d7194-3970-48ea-803b-1f97b6fae547";
+
+//Spit out in case of trouble loading csproj
+console.log("bigProjectGuid:", bigProjectGuid);
+console.log("projectGuid:", projectGuid);
+console.log("packageId:", packageId);
+console.log("solutionId:", solutionId);
+console.log("featureRefId:", featureRefId);
+console.log("featureId:", featureId);
+console.log("codeModuleSpdataId:", codeModuleSpdataId);
+console.log("webpartModuleSpdataId:", webpartModuleSpdataId);
 
 module.exports = yeoman.Base.extend({
     prompting: function () {
@@ -82,7 +97,8 @@ module.exports = yeoman.Base.extend({
             this.destinationPath(this.props.projectName + 'Sln/README.md'), true);
         this.fs.copy(this.templatePath("jsconfig.json"),
             this.destinationPath(this.props.projectName + 'Sln/jsconfig.json'), true);
-        this.fs.copy(this.templatePath(".vscode"), this.destinationPath(this.props.projectName + 'Sln/.vscode'), true);
+
+        this.fs.copyTpl(this.templatePath(".vscode"), this.destinationPath(this.props.projectName + 'Sln/.vscode'), templateModel);
 
         this.fs.copyTpl(
             this.templatePath('{package.json,gulpfile.js,.gitignore}'),
@@ -92,9 +108,12 @@ module.exports = yeoman.Base.extend({
 
 
         this.fs.copyTpl(this.templatePath("WebComponents/.container"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/.container'), templateModel);
-        
+
         this.fs.copy(this.templatePath("WebComponents/buildSP"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/buildSP'), true);
-        this.fs.copy(this.templatePath("WebComponents/src"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src'), true);
+        this.fs.copyTpl(this.templatePath("WebComponents/src/webpartcontent.htm"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/webpartcontent.htm'), templateModel);
+        this.fs.copy(this.templatePath("WebComponents/src/css"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/css'), true);
+        this.fs.copy(this.templatePath("WebComponents/src/images"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/images'), true);
+        this.fs.copyTpl(this.templatePath("WebComponents/src/js"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/js'), templateModel);
 
         this.fs.copyTpl(this.templatePath("WebComponents/buildlocal/loader.htm"),
             this.destinationPath(this.props.projectName + 'Sln/WebComponents/buildlocal/loader.htm'),
@@ -181,11 +200,8 @@ module.exports = yeoman.Base.extend({
 
     install: function () {
         this.log(yosay(
-            'You should install the npm modules yourself.\n Thats because I use gulp-xml-editor, which rebuilds a node compartment\n' +
-            'I had to set the correct npm build setting, for me that was\n' +
-            '    TODO: Go find out what I set at work, cos everything just works at home\n\n\n' +
-            'Also notice the gulpfile.  If you have trouble builing then check out the msbuild task and adjust the toolsVersion\n' +
-            "To match your environment,  Ideally use VS2013 or was it 2015, one of them.  I'll know for sure if I get help tesint this project someday"
+            "Now you're ready to run \n   npm install\nIf it fails go and read the README for this generator (https://github.com/binaryjam/generator-sb-framework ) as there are hints\n" +
+            "relating to likely environment problems."
         ));
     }
 });

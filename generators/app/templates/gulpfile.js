@@ -7,7 +7,7 @@ var prettyData = require('gulp-pretty-data');
 var clean = require('gulp-clean');
 var rename = require("gulp-rename");
 var msbuild = require("gulp-msbuild");
-var destination = "";
+
 
 if (!String.prototype.startsWith) {
     String.prototype.startsWith = function (searchString, position) {
@@ -16,12 +16,11 @@ if (!String.prototype.startsWith) {
     };
 }
 
-//Lol, gulp works our the dependancy tree and executes everything you need
-gulp.task('.BUILD', ['packagesp']);
+gulp.task('.BUILD', ['localBuild','packagesp']);
 gulp.task('.BUILDWSP', ['msbuild']);
 
-
-gulp.task('default', ['packagesp']);
+gulp.task('localBuild', ['buildhtmllocal','buildcssboth','buildjsboth','buildimgboth']);
+gulp.task('default', ['localBuild','packagesp']);
 
 gulp.task('cleanlocal', function () {
     return gulp.src('./WebComponents/buildlocal/**', {
@@ -54,6 +53,8 @@ gulp.task('buildhtmllocal', ['cleanlocal'], function () {
         .pipe(gulp.dest('./WebComponents/buildlocal'));
 });
 
+
+//Possible to use a bundler here as well if you want. 
 gulp.task('buildcssboth', ['cleanlocal', 'cleansp'], function () {
     return gulp.src(['./WebComponents/src/css/*.css'])
         .pipe(debug({
@@ -64,6 +65,7 @@ gulp.task('buildcssboth', ['cleanlocal', 'cleansp'], function () {
         .pipe(gulp.dest('./WebComponents/buildSP'));
 });
 
+//You can swap this out for browserify or webpack or jspm.io or whatever
 gulp.task('buildjsboth', ['cleanlocal', 'cleansp'], function () {
     return gulp.src(['./WebComponents/src/js/*.js'])
         .pipe(concat('bundle.js'))
@@ -298,6 +300,7 @@ gulp.task('msbuild', ['packagesp'], function () {
         .pipe(msbuild({
             targets: ['Package'],
             toolsVersion: 12.0,
+            stdout:true,
             properties: { 
                 OutputPath:"./bin/package"}
         }));
