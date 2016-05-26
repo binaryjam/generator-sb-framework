@@ -1,5 +1,4 @@
 var gulp = require("gulp");
-var debug = require("gulp-debug");
 var concat = require('gulp-concat');
 var gulpfn = require("gulp-fn");
 var xeditor = require("gulp-xml-editor");
@@ -7,6 +6,10 @@ var prettyData = require('gulp-pretty-data');
 var clean = require('gulp-clean');
 var rename = require("gulp-rename");
 var msbuild = require("gulp-msbuild");
+var gulpSequence = require('gulp-sequence');
+var debug = require('gulp-debug');
+
+var del = require('del');
 
 
 if (!String.prototype.startsWith) {
@@ -16,114 +19,102 @@ if (!String.prototype.startsWith) {
     };
 }
 
-gulp.task('.BUILD', ['localBuild','packagesp']);
-gulp.task('.BUILDWSP', ['msbuild']);
+gulp.task('.BUILD', ['bothBuild']);
 
-gulp.task('localBuild', ['buildhtmllocal','buildcssboth','buildjsboth','buildimgboth']);
-gulp.task('default', ['localBuild','packagesp']);
+gulp.task('.BUILDWSP', gulpSequence('spBuild', 'msbuild'));
 
-gulp.task('cleanlocal', function () {
-    return gulp.src('./WebComponents/buildlocal/**', {
-        read: false
-    })
-        .pipe(clean());
+gulp.task('bothBuild', gulpSequence(['spBuild', 'localBuild']));
+
+//dependancy tree got out of control so switch to sequence handler instead
+gulp.task('localBuild', gulpSequence(
+    'cleanlocal',
+    ['buildhtmllocal', 'buildcsslocal', 'buildjslocal', 'buildimglocal']
+));
+
+gulp.task('spBuild', gulpSequence(
+    'cleanspbuild',
+    'cleanspmodule',
+    ['buildcsssp', 'buildjssp', 'buildimgsp', 'buildhtmlsp'],
+    ['packageXmlFiles', 'packageImages'],
+    ['packageElements', 'packagespdata'],
+    'packagecsproj',
+    ['prettify1', 'prettify2', 'prettify3']
+));
+
+
+
+gulp.task('default', ['localBuild', 'packagesp']);
+
+
+/********************************************************************************************** */
+/* SP BUILD TASKS                                                                               */
+/********************************************************************************************** */
+
+gulp.task('cleanspbuild', function () {
+
+    return del(['./WebComponents/buildSP']);
+});
+gulp.task('cleanspmodule', function () {
+    return del(['./MyNewProject/CodeModule/**/*.{jpeg,gif,jpg,png,css,js,htm,html}']);
 });
 
-gulp.task('cleansp', ['cleansp1', 'cleansp2']);
-gulp.task('cleansp1', function () {
-    return gulp.src('./WebComponents/buildSP/**', {
-        read: false
-    })
-        .pipe(clean());
-});
-gulp.task('cleansp2', ['cleansp1'], function () {
-    return gulp.src('./<%=projectName%>/CodeModule/**/*.{jpg,png,css,js,htm,html}', {
-        read: false
-    })
-        .pipe(clean());
-});
-
-gulp.task('buildhtmllocal', ['cleanlocal'], function () {
-    return gulp.src(['./WebComponents/.container/localtop.htm',
-        './WebComponents/.container/loader.htm',
-        './WebComponents/src/webpartcontent.htm',
-        './WebComponents/.container/localbottom.htm'
-    ])
-        .pipe(concat('index.html'))
-        .pipe(gulp.dest('./WebComponents/buildlocal'));
-});
-
-
-//Possible to use a bundler here as well if you want. 
-gulp.task('buildcssboth', ['cleanlocal', 'cleansp'], function () {
+gulp.task('buildcsssp', function () {
     return gulp.src(['./WebComponents/src/css/*.css'])
-        .pipe(debug({
-            title: 'cssbuild:'
-        }))
         .pipe(concat('bundle.css'))
-        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/<%=webPartName%>'))
         .pipe(gulp.dest('./WebComponents/buildSP'));
 });
 
-//You can swap this out for browserify or webpack or jspm.io or whatever
-gulp.task('buildjsboth', ['cleanlocal', 'cleansp'], function () {
+gulp.task('buildjssp', function () {
     return gulp.src(['./WebComponents/src/js/*.js'])
         .pipe(concat('bundle.js'))
-        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/<%=webPartName%>'))
         .pipe(gulp.dest('./WebComponents/buildSP'));
 });
 
-gulp.task('buildimgboth', ['cleanlocal', 'cleansp'], function () {
+gulp.task('buildimgsp', function () {
     return gulp.src(['./WebComponents/src/images/*.*'])
-        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/<%=webPartName%>/images'))
         .pipe(gulp.dest('./WebComponents/buildSP/images'));
-
 });
 
-gulp.task('buildhtmlsp', ['cleansp'], function () {
-    return gulp.src(['./WebComponents/.container/loader.htm', './WebComponents/src/webpartcontent.htm'])
+gulp.task('buildhtmlsp', function () {
+    return gulp.src(['./WebComponents/.container/loader.htm', './WebComponents/src/webpart/webpartcontent.htm'])
         .pipe(concat('loader.htm'))
         .pipe(gulp.dest('./WebComponents/buildSP'));
 });
 
 var elementFiles = [];
 
-gulp.task('packagesp', ['prettify1', 'prettify2', 'prettify3']);
-
-gulp.task('packageXmlFiles', ['buildhtmlsp', 'buildjsboth', 'buildcssboth'], function () {
-
+gulp.task('packageXmlFiles', function () {
     return gulp.src(['./WebComponents/buildSP/*.*'])
-        .pipe(gulp.dest('./<%=projectName%>/CodeModule'))
+        .pipe(gulp.dest('./MyNewProject/CodeModule'))
         .pipe(gulpfn(function (file) {
             var fname = file.path.substring(file.base.length + 1);
             var obj = {
                 "name": fname,
                 srcprefix: "",
                 "path": 'CodeModule\\',
-                "Url": "SBFrameWork/<%=webPartName%>/" + fname
+                "Url": "SBFrameWork/MyNewPart/" + fname
             };
             elementFiles.push(obj);
-            console.log("     AddToArr:" + obj.name + " :: " + obj.path);
         }));
 });
 
-gulp.task('packageImages', ['buildimgboth'], function () {
+gulp.task('packageImages', function () {
     return gulp.src(['./WebComponents/buildSP/images/*.*'])
-        .pipe(gulp.dest('./<%=projectName%>/CodeModule/images'))
+        .pipe(gulp.dest('./MyNewProject/CodeModule/images'))
         .pipe(gulpfn(function (file) {
             var fname = file.path.substring(file.base.length + 1);
             elementFiles.push({
                 "name": fname,
                 srcprefix: 'images\\',
                 path: 'CodeModule\\images\\',
-                "Url": "SBFrameWork/<%=webPartName%>/images/" + fname
+                "Url": "SBFrameWork/MyNewPart/images/" + fname
             });
         }));
 
 });
 
-gulp.task('packageElements', ['packageXmlFiles', 'packageImages'], function () {
-    return gulp.src("./<%=projectName%>/CodeModule/Elements.xml")
+gulp.task('packageElements', function () {
+    return gulp.src("./MyNewProject/CodeModule/Elements.xml")
         .pipe(xeditor(function (xml, xmljs) {
             var node = xml.find('//xmlns:File', 'http://schemas.microsoft.com/sharepoint/');
             for (var i = 0; i < node.length; i++) {
@@ -131,8 +122,6 @@ gulp.task('packageElements', ['packageXmlFiles', 'packageImages'], function () {
             }
             var module = xml.get('//xmlns:Module', 'http://schemas.microsoft.com/sharepoint/');
             for (var j = 0; j < elementFiles.length; j++) {
-                console.log("     CreatingElement:");
-                console.log(elementFiles[j]);
                 var path = elementFiles[j].path + elementFiles[j].name;
                 module.node('File')
                     .attr({
@@ -150,16 +139,16 @@ gulp.task('packageElements', ['packageXmlFiles', 'packageImages'], function () {
 
             return xml;
         }))
-        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
+        .pipe(gulp.dest("./MyNewProject/CodeModule/", {
             "overwrite": true
         }));
 });
 
 
 
-gulp.task('packagespdata', ['packageXmlFiles', 'packageImages'], function () {
+gulp.task('packagespdata', function () {
     //Clear out all the File objects in the XML
-    return gulp.src("./<%=projectName%>/CodeModule/SharePointProjectItem.spdata")
+    return gulp.src("./MyNewProject/CodeModule/SharePointProjectItem.spdata")
         .pipe(xeditor(function (xml, xmljs) {
             var node = xml.find('//xmlns:ProjectItemFile[@Type="ElementFile"]', "http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel");
             for (var i = 0; i < node.length; i++) {
@@ -183,15 +172,15 @@ gulp.task('packagespdata', ['packageXmlFiles', 'packageImages'], function () {
 
             return xml;
         }))
-        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
+        .pipe(gulp.dest("./MyNewProject/CodeModule/", {
             "overwrite": true
         }));
 });
 
-gulp.task('packagecsproj', ['packageElements', 'packagespdata'], function () {
+gulp.task('packagecsproj', function () {
 
     //Clear out all the File objects in the XML
-    return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
+    return gulp.src("./MyNewProject/MyNewProject.csproj")
         .pipe(xeditor(function (xml, xmljs) {
             var node = xml.get('//xmlns:ItemGroup[xmlns:Content]', "http://schemas.microsoft.com/developer/msbuild/2003");
             if (typeof node !== "undefined") {
@@ -253,56 +242,96 @@ gulp.task('packagecsproj', ['packageElements', 'packagespdata'], function () {
             }
             return xml;
         }))
-        .pipe(gulp.dest("./<%=projectName%>/", {
+        .pipe(gulp.dest("./MyNewProject/", {
             "overwrite": true
         }));
 });
 
-gulp.task('prettify1', ['packageElements'], function () {
-    return gulp.src("./<%=projectName%>/CodeModule/Elements.xml")
+gulp.task('prettify1', function () {
+    return gulp.src("./MyNewProject/CodeModule/Elements.xml")
         .pipe(prettyData({
             type: 'prettify'
         }))
-        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
+        .pipe(gulp.dest("./MyNewProject/CodeModule/", {
             "overwrite": true
         }));
 });
 
-gulp.task('prettify2', ['packagespdata'], function () {
-    return gulp.src("./<%=projectName%>/CodeModule/SharePointProjectItem.spdata")
+gulp.task('prettify2', function () {
+    return gulp.src("./MyNewProject/CodeModule/SharePointProjectItem.spdata")
         .pipe(rename("SharePointProjectItem.spdata.xml"))
         .pipe(prettyData({
             type: 'prettify'
         }))
         .pipe(rename("SharePointProjectItem.spdata"))
-        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
+        .pipe(gulp.dest("./MyNewProject/CodeModule/", {
             "overwrite": true
         }));
 });
 
 //If we get problems with unidentified package items then delete the .suo files in a new task item
 
-gulp.task('prettify3', ['packagecsproj'], function () {
-    return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
-        .pipe(rename("<%=projectName%>.csproj.xml"))
+gulp.task('prettify3', function () {
+    return gulp.src("./MyNewProject/MyNewProject.csproj")
+        .pipe(rename("MyNewProject.csproj.xml"))
         .pipe(prettyData({
             type: 'prettify'
         }))
-        .pipe(rename("<%=projectName%>.csproj"))
-        .pipe(gulp.dest("./<%=projectName%>/", {
+        .pipe(rename("MyNewProject.csproj"))
+        .pipe(gulp.dest("./MyNewProject/", {
             "overwrite": true
         }));
 });
 
 
-gulp.task('msbuild', ['packagesp'], function () {
-    return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
+gulp.task('msbuild', function () {
+    return gulp.src("./MyNewProject/MyNewProject.csproj")
         .pipe(msbuild({
             targets: ['Package'],
             toolsVersion: 12.0,
-            stdout:true,
-            properties: { 
-                OutputPath:"./bin/package"}
+            stdout: true,
+            properties: {
+                OutputPath: "./bin/package"
+            }
         }));
 
 });
+
+
+
+/********************************************************************************************** */
+/*Local Dummy site BUILD TASKS                                                                  */
+/********************************************************************************************** */
+gulp.task('cleanlocal', function () {
+    return del(['./WebComponents/buildlocal/**']);
+});
+
+gulp.task('buildhtmllocal', function () {
+    return gulp.src(['./WebComponents/.container/localtop.htm',
+        './WebComponents/.container/loader.htm',
+        './WebComponents/src/webpart/webpartcontent.htm',
+        './WebComponents/.container/localbottom.htm'
+    ])
+        .pipe(concat('index.html'))
+        .pipe(gulp.dest('./WebComponents/buildlocal'));
+});
+
+//Possible to use a bundler here as well if you want. 
+gulp.task('buildcsslocal', function () {
+    return gulp.src(['./WebComponents/src/css/*.css'])
+        .pipe(concat('bundle.css'))
+        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/MyNewPart'));
+});
+
+//You can swap this out for browserify or webpack or jspm.io or whatever
+gulp.task('buildjslocal', function () {
+    return gulp.src(['./WebComponents/src/js/*.js'])
+        .pipe(concat('bundle.js'))
+        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/MyNewPart'));
+});
+
+gulp.task('buildimglocal', function () {
+    return gulp.src(['./WebComponents/src/images/*.*'])
+        .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/MyNewPart/images'));
+});
+
