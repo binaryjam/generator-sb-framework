@@ -1,0 +1,1274 @@
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, main {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+HAYDNJAMES WEBSITE DESIGN
+PROJECT CORE CSS STYLES v0.1
+
+1. Reset/Normalise
+2. Body
+3. Grid (inc wrapper)
+4. Typography
+5. Tables
+6. Buttons
+7. Forms
+8. Alerts
+9. Core Layout
+
+------------------------------------------*/
+
+/*------------------------------------------
+1. Reset/Normalise
+------------------------------------------*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {margin: 0; padding: 0; border: 0; font: inherit; vertical-align: baseline;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+strong {font-weight:bold;}
+em { font-style: italic;}
+blockquote, q { quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;}
+table {border-collapse: collapse; border-spacing: 0;}
+input:focus, select:focus, textarea:focus, button:focus { outline: none;}
+* {box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -webkit-text-size-adjust: none; -moz-text-size-adjust: none; -webkit-font-smoothing: antialiased;
+}
+
+/* Clearfix */
+
+.clearfix:before,
+.clearfix:after {
+ 	content: "";
+	display: table;
+}
+
+.clearfix:after {
+ 	clear: both;
+}
+
+.clearfix {
+ 	zoom: 1; /* ie 6/7 */
+	padding: 0;
+	margin: 0;
+}
+
+/*------------------------------------------
+2. Body
+------------------------------------------*/
+
+html {font-size: 62.5%;} /* Resets font size to 1em = 10px */
+
+body {
+	margin: 0px;
+	background-color: #dfdfdf;
+	font-family: Polo, Arial;
+	font-weight: normal;
+	font-size: 1.5em; /* Sets site-wide font size to 14px */
+	color: #575757;
+	line-height: 1.5em;
+}
+
+/*------------------------------------------
+3. Typography
+------------------------------------------*/
+
+/* Heading core styles */
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	font-family: inherit;
+	line-height: 1.2em;
+	color: #ea1c0a;
+	margin: 0;
+}
+
+/* Individual heading styles */
+h1, .h1 {font-size: 2.75em;}
+h2, .h2 {font-size: 1.6em;}
+h3, .h3 {font-size: 2.0em;}
+h4, .h4 {font-size: 1.71em;}
+h5, .h5 {font-size: 1.42em;}
+h6, .h6 {font-size: 1.14em;}
+
+/* Paragraph */
+p {margin-bottom: 1em;}
+p:last-child {margin-bottom: 0;}
+
+/* Inline links */
+a:link, a:visited {
+	color: #ea1c0a;
+	text-decoration: none;
+	transition: all 0.5s linear;
+}
+
+a:hover, a:active {
+	color: #740006;
+	transition: all 0.3s linear;
+}
+
+/* Blockquote */
+blockquote {
+	margin: 1.5em 0;
+	padding: 15px;
+	min-width: 100%;
+	background-color: #ebebeb;
+	border-left: 3px solid #00aac8;
+	font-style: italic;
+}
+
+hr {
+	border: none;
+	border-top: 1px solid #c1c1c1;
+	margin: 1.5em 0;
+	padding: 0;
+}
+
+/* Text alignment */
+.text-align-left {text-align: left;} /* All text is left aligned by default so only use to reset */
+.text-align-right {text-align: right;}
+.text-align-center {text-align: center;}
+.text-align-justify {text-align: justify;}
+
+/* Text transform */
+.text-transform-uppercase {text-transform:uppercase;}
+.text-transform-lowercase {text-transform:lowercase;}
+
+
+/* Lists */
+ul, ol {
+	list-style-position: default;
+	margin: 0 0 0.5em 35px;
+}
+
+ul ul, ol ol, ul ol, ol ul { /* Resets margins on nested lists */
+	margin: 0 0 0 35px;
+}
+
+ol ol {
+	list-style: lower-alpha;
+}
+
+ol ol ol {
+	list-style: lower-roman;
+}
+
+ul li, ol li {
+	padding: 0 0 0.5em 0;
+}
+
+
+/*------------------------------------------
+4. Grid and Core Layout
+------------------------------------------*/
+
+.grid-wrapper { /* All content must sit in the grid wrapper */
+	width: 100%;
+	margin: auto;
+}
+
+.grid { /* The starting element for all grids. Must be applied to the parent element or div of your grid columns */
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.grid > *  { /* Base style for grid columns */
+	float:left;
+	padding: 20px;
+	width: 100%;
+}
+
+.grid > hr {
+	padding: 0;
+}
+
+/* Even column grids */
+
+.grid-width-1 > *, .grid-width-mini-1 > * {width: 100%;}
+.grid-width-2 > *, .grid-width-mini-2 > * {width: 50%;}
+.grid-width-3 > *, .grid-width-mini-3 > * {width: 33.333%;}
+.grid-width-4 > *, .grid-width-mini-4 > * {width: 25%;}
+.grid-width-5 > *, .grid-width-mini-5 > * {width: 20%;}
+.grid-width-6 > *, .grid-width-mini-6 > * {width: 16.666%;}
+.grid-width-10 > *, .grid-width-mini-10 > * {width: 10%;}
+
+/* Smart Screens (smartphone landscape) */
+	@media screen and (min-width: 480px) {
+		.grid-width-small-1  > * {width: 100%;}
+		.grid-width-small-2  > * {width: 50%;}
+		.grid-width-small-3  > * {width: 33.333%;}
+		.grid-width-small-4  > * {width: 25%;}
+		.grid-width-small-5  > * {width: 20%;}
+		.grid-width-small-6  > * {width: 16.666%;}
+		.grid-width-small-10  > * {width: 10%;}
+	}
+/* Medium Screens (Tablets) */
+	@media screen and (min-width: 760px) {
+		.grid-width-medium-1  > * {width: 100%;}
+		.grid-width-medium-2  > * {width: 50%;}
+		.grid-width-medium-3  > * {width: 33.333%;}
+		.grid-width-medium-4  > * {width: 25%;}
+		.grid-width-medium-5  > * {width: 20%;}
+		.grid-width-medium-6  > * {width: 16.666%;}
+		.grid-width-medium-10  > * {width: 10%;}
+	}	
+/* Large Screens (Desktops) */
+	@media screen and (min-width: 960px) {
+		.grid-width-large-1  > * {width: 100%;}
+		.grid-width-large-2  > * {width: 50%;}
+		.grid-width-large-3  > * {width: 33.333%;}
+		.grid-width-large-4  > * {width: 25%;}
+		.grid-width-large-5  > * {width: 20%;}
+		.grid-width-large-6  > * {width: 16.666%;}
+		.grid-width-large-10  > * {width: 10%;}
+	}
+/* Extra Large (Large Monitors) */
+	@media screen and (min-width: 1200px) {
+		.grid-width-extralarge-1  > * {width: 100%;}
+		.grid-width-extralarge-2  > * {width: 50%;}
+		.grid-width-extralarge-3  > * {width: 33.333%;}
+		.grid-width-extralarge-4  > * {width: 25%;}
+		.grid-width-extralarge-5  > * {width: 20%;}
+		.grid-width-extralarge-6  > * {width: 16.666%;}
+		.grid-width-extralarge-10  > * {width: 10%;}
+	}
+
+/* Single column widths */
+
+/* Default and Mini screens (smartphone portrait) */
+
+.width-1-1, .width-mini-1-1, .width-2-2, .width-mini-2-2, .width-3-3, .width-mini-3-3, .width-4-4, .width-mini-4-4, .width-5-5, .width-mini-5-5, .width-6-6, .width-mini-6-6, .width-10-10, .width-mini-10-10 {width: 100%;}		
+.width-1-2, .width-mini-1-2, .width-2-4, .width-mini-2-4, .width-3-6, .width-mini-3-6, .width-5-10, .width-mini-5-10 {width: 50%;}
+.width-1-3, .width-mini-1-3 {width: 33.333%;}
+.width-2-3, .width-mini-2-3, .width-4-6, .width-mini-4-6, .width-2-6, .width-mini-2-6 {width: 66.666%;}
+.width-1-4, .width-mini-1-4 {width: 25%;}
+.width-3-4, .width-mini-3-4 {width: 75%;}
+.width-1-5, .width-mini-1-5 {width: 20%;}
+.width-2-5, .width-mini-2-5 {width: 40%;}
+.width-3-5, .width-mini-3-5 {width: 60%;}
+.width-4-5, .width-mini-4-5 {width: 80%;}			
+.width-1-6, .width-mini-1-6 {width: 16.666%;}
+.width-5-6, .width-mini-5-6 {width: 83.333%;}
+.width-1-10, .width-mini-1-10 {width: 10%;}
+.width-2-10, .width-mini-2-10 {width: 20%;}
+.width-3-10, .width-mini-3-10 {width: 30%;}
+.width-4-10, .width-mini-4-10 {width: 40%;}
+.width-6-10, .width-mini-6-10 {width: 60%;}
+.width-7-10, .width-mini-7-10 {width: 70%;}
+.width-8-10, .width-mini-8-10 {width: 80%;}
+.width-9-10, .width-mini-9-10 {width: 90%;}
+
+
+
+/* Smart Screens (smartphone landscape) */
+	@media screen and (min-width: 480px) {
+		.width-small-1-1, .width-small-2-2, .width-small-4-4, .width-small-5-5, .width-small-6-6, .width-small-10-10 {width: 100%;}		
+		.width-small-1-2, .width-small-2-4, .width-small-3-6, .width-small-5-10 {width: 50%;}				
+		.width-small-1-3, .width-small-2-6 {width: 33.333%;}
+		.width-small-2-3, .width-small-4-6 {width: 66.666%;}	
+		.width-small-1-4 {width: 25%;}
+		.width-small-3-4 {width: 75%;}		
+		.width-small-1-5 {width: 20%;}
+		.width-small-2-5 {width: 40%;}
+		.width-small-3-5 {width: 60%;}
+		.width-small-4-5 {width: 80%;}		
+		.width-small-1-6 {width: 16.666%;}
+		.width-small-5-6 {width: 83.333%;}
+		.width-small-1-10 {width: 10%;}
+		.width-small-2-10 {width: 20%;}
+		.width-small-3-10 {width: 30%;}
+		.width-small-4-10 {width: 40%;}
+		.width-small-6-10 {width: 60%;}
+		.width-small-7-10 {width: 70%;}
+		.width-small-8-10 {width: 80%;}
+		.width-small-9-10 {width: 90%;}
+	}
+/* Medium Screens (Tablets) */
+	@media screen and (min-width: 760px) {
+		.width-medium-1-1, .width-medium-2-2, .width-medium-4-4, .width-medium-5-5, .width-medium-6-6, .width-medium-10-10 {width: 100%;}		
+		.width-medium-1-2, .width-medium-2-4, .width-medium-3-6, .width-medium-5-10 {width: 50%;}				
+		.width-medium-1-3, .width-medium-2-6 {width: 33.333%;}
+		.width-medium-2-3, .width-medium-4-6 {width: 66.666%;}	
+		.width-medium-1-4 {width: 25%;}
+		.width-medium-3-4 {width: 75%;}		
+		.width-medium-1-5 {width: 20%;}
+		.width-medium-2-5 {width: 40%;}
+		.width-medium-3-5 {width: 60%;}
+		.width-medium-4-5 {width: 80%;}		
+		.width-medium-1-6 {width: 16.666%;}
+		.width-medium-5-6 {width: 83.333%;}
+		.width-medium-1-10 {width: 10%;}
+		.width-medium-2-10 {width: 20%;}
+		.width-medium-3-10 {width: 30%;}
+		.width-medium-4-10 {width: 40%;}
+		.width-medium-6-10 {width: 60%;}
+		.width-medium-7-10 {width: 70%;}
+		.width-medium-8-10 {width: 80%;}
+		.width-medium-9-10 {width: 90%;}
+	}	
+/* Large Screens (Desktops) */
+	@media screen and (min-width: 960px) {
+		.width-large-1-1, .width-large-2-2, .width-large-4-4, .width-large-5-5, .width-large-6-6, .width-large-10-10 {width: 100%;}		
+		.width-large-1-2, .width-large-2-4, .width-large-3-6, .width-large-5-10 {width: 50%;}			
+		.width-large-1-3, .width-large-2-6 {width: 33.333%;}
+		.width-large-2-3, .width-large-4-6 {width: 66.666%;}	
+		.width-large-1-4 {width: 25%;}
+		.width-large-3-4 {width: 75%;}		
+		.width-large-1-5 {width: 20%;}
+		.width-large-2-5 {width: 40%;}
+		.width-large-3-5 {width: 60%;}
+		.width-large-4-5 {width: 80%;}		
+		.width-large-1-6 {width: 16.666%;}
+		.width-large-5-6 {width: 83.333%;}
+		.width-large-1-10 {width: 10%;}
+		.width-large-2-10 {width: 20%;}
+		.width-large-3-10 {width: 30%;}
+		.width-large-4-10 {width: 40%;}
+		.width-large-6-10 {width: 60%;}
+		.width-large-7-10 {width: 70%;}
+		.width-large-8-10 {width: 80%;}
+		.width-large-9-10 {width: 90%;}
+	}
+/* Extra Large (Large Monitors) */
+	@media screen and (min-width: 1200px) {
+		.width-extralarge-1-1, .width-extralarge-2-2, .width-extralarge-4-4, .width-extralarge-5-5, .width-extralarge-6-6, .width-extralarge-10-10 {width: 100%;}		
+		.width-extralarge-1-2, .width-extralarge-2-4, .width-extralarge-3-6, .width-extralarge-5-10 {width: 50%;}				
+		.width-extralarge-1-3, .width-extralarge-2-6 {width: 33.333%;}
+		.width-extralarge-2-3, .width-extralarge-4-6 {width: 66.666%;}	
+		.width-extralarge-1-4 {width: 25%;}
+		.width-extralarge-3-4 {width: 75%;}		
+		.width-extralarge-1-5 {width: 20%;}
+		.width-extralarge-2-5 {width: 40%;}
+		.width-extralarge-3-5 {width: 60%;}
+		.width-extralarge-4-5 {width: 80%;}		
+		.width-extralarge-1-6 {width: 16.666%;}
+		.width-extralarge-5-6 {width: 83.333%;}
+		.width-extralarge-1-10 {width: 10%;}
+		.width-extralarge-2-10 {width: 20%;}
+		.width-extralarge-3-10 {width: 30%;}
+		.width-extralarge-4-10 {width: 40%;}
+		.width-extralarge-6-10 {width: 60%;}
+		.width-extralarge-7-10 {width: 70%;}
+		.width-extralarge-8-10 {width: 80%;}
+		.width-extralarge-9-10 {width: 90%;}
+	}
+
+/* Grid Spacing */
+/*Control's spacing of all elements in grid - must be added to the .grid element.*/
+.grid-no-padding > * {padding: 0px;}
+.grid-low-padding  > * {padding: 5px;}
+.grid-medium-padding  > * {padding: 10px;}
+.grid-large-padding  > * {padding: 30px;}
+.grid-no-vertical-padding > * {padding-top:0px; padding-bottom: 0px;}
+.grid-low-vertical-padding > * {padding-top:5px; padding-bottom: 5px;}
+.grid-medium-vertical-padding > * {padding-top:10px; padding-bottom: 10px;}
+.grid-large-vertical-padding > * {padding-top:30px; padding-bottom: 30px;}
+.grid-no-horizontal-padding > * {padding-left:0px; padding-right: 0px;}
+.grid-low-horizontal-padding > *	{padding-left:5px; padding-right: 5px;}
+.grid-medium-horizontal-padding > * {padding-left:10px; padding-right: 10px;}
+.grid-large-horizontal-padding > * {padding-left:30px; padding-right: 30px;}
+
+
+/*Individual element padding controls - can be applied to single columns */
+.no-padding {padding: 0px}
+.low-padding {padding: 5px}
+.medium-padding {padding: 10px}
+.large-padding {padding: 30px}
+.no-vertical-padding {padding-top:0px; padding-bottom: 0px;}
+.low-vertical-padding {padding-top:5px; padding-bottom: 5px;}
+.medium-vertical-padding {padding-top:10px; padding-bottom: 10px;}
+.large-vertical-padding {padding-top:30px; padding-bottom: 30px;}
+.no-horizontal-padding {padding-left:0px; padding-right: 0px;}
+.low-horizontal-padding	{padding-left:5px; padding-right: 5px;}
+.medium-horizontal-padding {padding-left:10px; padding-right: 10px;}
+.large-horizontal-padding {padding-left:30px; padding-right: 30px;}
+
+
+/* Additional options for grid columns */
+.grid-fixed-width { /* Applies a max-width. Can be used on grid-wrapper or grid-row depending on website design */
+	max-width: 1400px;
+	margin: auto;
+}
+
+/* Centering - centers a single column smaller than the grid, leaving blank space either side. */
+.grid-center, .grid-center-mini {
+	float: none;
+	margin: 0 auto;
+}
+	@media screen and (min-width: 480px) {
+		.grid-center-small {float: none; margin: 0 auto;}
+	}
+	@media screen and (min-width: 760px) {
+		.grid-center-medium {float: none; margin: 0 auto;}
+	}
+	@media screen and (min-width: 960px) {
+		.grid-center-large {float: none; margin: 0 auto;}
+	}
+	@media screen and (min-width: 1200px) {
+		.grid-center-extralarge {float: none; margin: 0 auto;}
+	}
+
+/* Forces a column to the right but will appear above other columns on smaller screens (the column must be first in the grid) */
+.grid-pull-right, .grid-pull-right-mini { 
+	float:right;
+}
+	@media screen and (min-width: 480px) {
+		.grid-pull-right-small {float:right;}
+	}
+	@media screen and (min-width: 760px) {
+		.grid-pull-right-medium {float:right;}
+	}
+	@media screen and (min-width: 960px) {
+		.grid-pull-right-large {float:right;}
+	}
+	@media screen and (min-width: 1200px) {
+		.grid-pull-right-extralarge {float:right;}
+	}
+
+/* Demo Use Only */
+.test-grid .grid-column {
+	background-color: #ebebeb;
+	background-clip: content-box;
+	text-align: center;
+}
+
+
+/*------------------------------------------
+5. Tables
+------------------------------------------*/
+
+table {
+	float:left;
+	min-width: 100%;
+	text-align: left;
+	margin: 1.5em 0;
+}
+
+
+table td, table th {
+	padding: 10px;
+	border-bottom: 1px solid #d6d6d6;	
+}
+
+table th {
+	border-bottom: 1px solid #00aac8;
+	color: #303030;
+	font-weight: bold;
+	font-size: 1.14em;
+}
+
+/* Table Style - Boxed */
+
+.table-boxed td, .table-boxed th {
+	border: 1px solid #d6d6d6;
+}
+
+.table-boxed th {
+	background-color: #d6d6d6;
+}
+
+/* Table Style - Brand */
+
+.table-brand th {
+	border: 1px solid #00aac8;
+	background-color: #00aac8;
+	color: #ffffff;
+}
+
+/* Table Style - Hover */
+
+.table-hover tr td {
+	transition: all 0.5s linear;
+}
+
+.table-hover tr:hover td {
+	background-color: #ebebeb;
+	cursor: pointer;
+	transition: all 0.3s linear;
+}
+
+/* Table Style - Alternate */
+
+.table-alternate tr:nth-child(odd) {
+   background-color: #ebebeb;
+}
+
+.table-alternate tr:hover td {
+	background-color: #d6d6d6;
+}
+
+/*------------------------------------------
+6. Buttons
+------------------------------------------*/
+
+input[type="submit"], input[type="button"], button, .button, a:link.button, a:visited.button {
+	float:left;
+	padding: 12px 25px;
+	color: #ffffff;
+	font-size: 1.00em;
+	font-family: inherit;
+	border: none;
+	background-color: #ea1c0a;
+	background: linear-gradient(#f45143, #ea1c0a);
+	cursor: pointer;
+	line-height: 1.0em;
+	margin: 0 0;
+	text-decoration: none;
+	transition: all 0.3s linear;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover, button:hover, .button:hover, a:hover.button, a:active.button {
+	background-color: #d30133;
+	background: linear-gradient(#d30133, #d30133);
+	transition: all 0.3s linear;
+}
+
+input[type="submit"]:active, input[type="button"]:active, button:active, .button:active, a:active.button {
+	background-color: #b80026;
+	background: linear-gradient(#b80026, #d30133);
+	transition: all 0.3s linear;
+}
+
+/* Button Sizes */
+
+input.button-sm, .button-sm, a:link.button-sm {
+	font-size: 0.93em;
+	padding: 8px 15px;
+}
+
+input.button-lg, .button-lg, a:link.button-lg {
+	font-size: 1.14em;
+	padding: 14px 25px;
+}
+
+input.button-xl, .button-xl, a:link.button-xl {
+	font-size: 1.28em;
+	padding: 18px 30px;
+}
+
+/* Button Style - Branded */
+
+input.button-primary, .button-primary, a:link.button-primary, a:visited.button-primary {
+	border: 1px solid #00778c;
+	background-color: #00aac8;
+	color: #ffffff;
+}
+
+input.button-primary:hover, .button-primary:hover, a:hover.button-primary, a:active.button-primary {
+	background-color: #00778c;
+}
+
+/* Button Style - Outline */
+
+input.button-secondary, .button-secondary, a:link.button-secondary, a:visited.button-secondary {
+	border: 1px solid #00aac8;
+	background-color: transparent;
+	color: #00aac8;
+}
+
+input.button-secondary:hover, .button-secondary:hover, a:hover.button-secondary, a:active.button-secondary {
+	background-color: #00aac8;
+	color: #ffffff;
+}
+
+/* Button Groups */
+
+.button-group {
+	float:left;
+	margin: 0 10px 10px 0;
+}
+
+.button-group button, .button-group .button, .button-group a:link.button, .button-group a:visited.button {
+	float:left;
+	margin: 0;
+	border-left: none;
+}
+
+.button-group button:first-child, .button-group a:link:first-child, .button-group a:visited:first-child {
+	border-left: 1px solid #d6d6d6;
+}
+
+.button-group button.button-primary:first-child ,.button-group a.button-primary:first-child {
+	border-left: 1px solid #00778c;
+}
+
+.button-group button.button-secondary:first-child, .button-group a.button-secondary:first-child {
+	border-left: 1px solid #00aac8;
+}
+
+/*------------------------------------------
+7. Forms
+------------------------------------------*/
+
+.form {
+	margin: 0 -10px;
+}
+
+.form-group {
+/* You must asign a width class (from grid) to div also to create desired layout e.g <div class="form-group width-1-2"> */
+	float:left;
+	padding: 0 10px 15px 10px;
+}
+
+.form-error {
+	float:left;
+	padding: 0 10px;
+	min-width: 100%;
+}
+
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
+	width: 100%;
+	padding: 10px;
+	margin: 0;
+	border: 1px solid #c1c1c1;
+	font-size: 1em;
+	line-height: 1em;
+	font-family: inherit;
+	color: #595959;
+	transition: all 0.3s linear;
+}
+
+select {
+	height: 38px;
+}
+
+input[type="email"], input[type="number"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+ 
+input[type="checkbox"], input[type="radio"] {
+	float:left;
+	display: inline;
+}
+
+input:focus, textarea:focus, select:focus {
+	border: 1px solid #17b2cd;
+	outline: 0;
+	transition: all 0.3s linear;
+}
+
+.form-group textarea {
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 10em;
+	max-height: 10em;
+	line-height: 1.2em;
+}
+
+.form-group label {
+	float:left;
+	font-size: 1.07em;
+	font-weight: bold;
+	color: #303030;
+	margin: 0 0 5px 0;
+}
+
+.form-group .label-text {
+	margin: 0 0 0 5px;
+	font-weight: normal;
+	display: inline-block;
+}
+
+.form-helptext {
+	font-size: 0.93em;
+}
+
+/* Input Groups */
+
+.form-input-group {
+	display: -webkit-flex;
+	display: flex;
+	border: 1px solid #c1c1c1;
+}
+
+.form-input-group input {
+	width: auto;
+	-webkit-flex: auto; /* Safari 6.1+ */
+	-ms-flex: auto; /* IE 10 */ 
+	flex: auto;
+	border: none;
+}
+
+.input-addon {
+	float:left;
+	padding: 11px 20px;
+	color: #595959;
+	font-size: 1.00em;
+	font-family: inherit;
+	background-color: #ebebeb;
+	line-height: 1em;
+	margin: 0;
+	-webkit-flex: none; /* Safari 6.1+ */
+	-ms-flex: none; /* IE 10 */
+	flex: none;
+}
+
+.form-input-group .button, .form-input-group button, .form-input-group input[type="submit"], .form-input-group input[type="button"] {
+	float:left;
+	width: auto;
+	margin: 0;
+	-webkit-flex: none; /* Safari 6.1+ */
+	-ms-flex: none; /* IE 10 */
+	flex: none;
+}
+
+.input-addon.left, .form-input-group .left {
+	border-right: 1px solid #d6d6d6;
+}
+.input-addon.right, .form-input-group .right {
+	border-left: 1px solid #d6d6d6;
+}
+
+/*------------------------------------------
+8. Alerts
+------------------------------------------*/
+
+.alert {
+	float:left;
+	padding: 10px;
+	width: 100%;
+	margin: 0;
+	background-color: #ebebeb;
+	border: 1px solid #acacac;
+}
+
+/* Contextual classes for alerts */
+
+.alert-info {
+	background-color: #c2d5dd;
+	border: 1px solid #32738c;
+}
+
+.alert-info strong {color: #32738c; }
+
+.alert-success {
+	background-color: #c5d7c8;
+	border: 1px solid #3c7846;
+}
+
+.alert-success strong {color: #3c7846; }
+
+.alert-warning {
+	background-color: #efd7b6;
+	border: 1px solid #c8780a;
+}
+
+.alert-warning strong {color: #c8780a;}
+
+.alert-error {
+	background-color: #efbfbf;
+	border: 1px solid #c82828;
+}
+
+.alert-error strong {color: #c82828;}
+
+/*------------------------------------------
+9. Core Layout Elements
+------------------------------------------*/
+
+/* Panel */
+
+.panel {
+	float:left;
+	width: 100%;
+	border: 1px solid #c1c1c1;
+	margin: 20px 0;
+}
+
+.panel .panel {margin: 0;} /* Removes margin for nested panels */
+
+.panel-header {
+	float: left;
+	width: 100%;
+	padding: 10px 10px;
+	background-color: #ebebeb;
+	border-bottom: 1px solid #d6d6d6;
+}
+
+.panel-header h1, .panel-header .h1, .panel-header h2, .panel-header .h2, .panel-header h3, .panel-header .h3, .panel-header h4, .panel-header .h4, .panel-header h5, .panel-header .h5, .panel-header h6, .panel-header .h6 {
+	margin: 0;
+}
+
+.panel-content {
+	float:left;
+	min-width: 100%;
+	padding: 10px 10px;
+}
+
+/* Blocks */
+/*/* Blocks have no padding by default - so a padding modifier class from the Grid section should be added */
+
+.block {
+	float: left;
+	min-width: 100%;
+	background-color: #ebebeb;
+}
+
+.rounded {
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+/* Margin Classes for blocks and panels */
+
+.margin {margin: 1em 0;} /* Applies same margin as paragraphs to top and bottom */
+.margin-top {margin: 1em 0 0 0;} /* Applies same margin as paragraphs to top only */
+.margin-bottom {margin: 0 0 1em 0;} /* Applies same margin as paragraphs to bottom only */
+
+.margin-medium {margin: 1.5em;} /* Apples 150% margin to top and bottom */
+.margin-medium-top {margin: 1.5em 0 0 0;} /* Applies 150% margin to top only */
+.margin-medium-bottom {margin: 0 0 1.5em 0;} /* Applies 150% margin to bottom only */
+
+.margin-large {margin: 2em;} /* Apples double margin to top and bottom */
+.margin-large-top {margin: 2em 0 0 0;} /* Applies double margin to top only */
+.margin-large-bottom {margin: 0 0 2em 0;} /* Applies double to bottom only */
+
+
+/*------------------------------------------
+10. Header
+------------------------------------------*/
+
+.main-header {
+	min-width: 100%;
+	background-color: #ffffff;
+	margin-bottom: 20px;
+	position:fixed;
+	z-index: 999;
+	padding: 0 0;
+	border-bottom: 2px solid #d8d8d8;
+}
+	
+	@media screen and (min-width: 760px) {
+		.main-header {
+			padding: 10px 0;
+		}	
+	}
+
+.main-header .brand {
+	float:left;
+	width: 100%;
+	max-width: 220px;
+}
+
+/*------------------------------------------
+11. Footer
+------------------------------------------*/
+
+.main-footer {
+	background-color: #575757;
+	color: #ffffff;
+	padding: 0 0 20px 0;
+}
+
+.main-footer .brand {
+	float:right;
+	max-width: 140px;
+}
+
+/*------------------------------------------
+12. Navigation
+------------------------------------------*/
+
+/* Navigation Bar Container */
+
+.navbar {
+	float:right;
+	padding: 0;
+	margin: 0;
+	min-width: 100%;
+}
+	@media screen and (min-width: 760px) {
+		.navbar {
+			min-width: initial;
+		}
+	}
+
+/* Main Navigation styles */
+
+.nav-main {
+	display: none;
+}
+	@media screen and (min-width: 760px) {
+		.nav-main {
+			display: block !important;
+		}
+	}
+
+.nav-main ul {
+	float:left;
+	padding: 0;
+	margin: 0;
+	list-style:none;
+	width: 100%;
+}
+
+@media screen and (min-width: 760px) {
+	.nav-main ul {
+		float:right;
+		width: auto;
+	}
+}
+
+.nav-main li {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+	@media screen and (min-width: 760px) {
+		.nav-main li {float:left;}
+	}
+
+/* Main Navigation buttons */
+
+.nav-main a:link, .nav-main a:visited {
+	float:left;
+	width: 100%;
+	margin: 0 0 10px 0;
+	padding: 12px 25px;
+	border:none;
+	background-color: #b0b0b0;
+	color: #ffffff;
+	font-size: 1.14em;
+	line-height: 1em;
+	border-radius: 2em;
+}
+
+.nav-main a:hover, .nav-main a:active {
+	background-color: #ea1c0a;
+	color: #ffffff;
+}
+
+	@media screen and (min-width: 760px) {
+		.nav-main a:link, .nav-main a:visited {
+			width: auto;
+			border-top: none;
+			margin: 0 0 0 10px;
+		}
+
+		.nav-main li:first-child a:link {
+			border: none;
+		}
+	}
+
+/* Main Navigation active button */
+
+.nav-main a:link.nav-active, .nav-main a:visited.nav-active {
+	background-color: #ea1c0a;
+	color: #ffffff;
+	border: none;
+}
+
+.nav-main a:hover.nav-active, .nav-main a:active.nav-active {
+	background-color: #80d5e4;
+}
+
+/* Main Navigation menu drop-down button */
+
+.nav-dropdown > a:link, .nav-droppdown > a:visited {
+	background-color: #ea1c0a;
+}
+.nav-dropdown > a:hover, .nav-dropdown a:active, .nav-dropdown:hover > a:link, .nav-dropdown:hover > a:hover, .nav-dropdown:hover > a:active, .nav-dropdown:hover > a:visited {
+	background-color: #740006;
+}
+	@media screen and (min-width: 760px) {
+		.nav-dropdown > a:link, .nav-droppdown > a:visited {
+			background-color: #b0b0b0;
+			background-image: url('images/bkground-dropdown.png');
+			background-repeat: no-repeat;
+			background-position: right center;
+			padding: 12px 50px 12px 25px;
+		}
+		.nav-dropdown > a:hover, .nav-dropdown a:active, .nav-dropdown:hover > a:link, .nav-dropdown:hover > a:hover, .nav-dropdown:hover > a:active, .nav-dropdown:hover > a:visited {
+			background-color: #ea1c0a;
+		}
+	}
+
+
+	@media screen and (min-width: 760px) {
+		.nav-dropdown {
+			position: relative;
+		}		
+	}
+
+/* Main Navigation drop-down content */
+
+.nav-dropdown-content {
+	background-color: #ffffff;
+	border:none;
+	padding: 0;
+}
+	@media screen and (min-width: 760px) {
+		.nav-dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #ffffff;
+			border: 1px solid #d8d8d8;
+			padding: 5px 0;
+			min-width: 200px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			top: 41px;
+			z-index: 1;
+			border-radius: 8px;
+			overflow:hidden;
+		}
+	}
+
+/* Main Navigation drop-down content buttons */
+
+.nav-dropdown-content li div {
+	border: none;
+	background-color: #ebebeb;
+	padding: 15px 15px 15px 30px;
+	color: #333333;
+}
+
+.nav-dropdown-content:hover li div:hover {
+	background-color: #d8d8d8;
+}
+
+	@media screen and (min-width: 760px) {
+		.nav-dropdown-content li div {
+			margin: 0 0;
+			min-width: 200px;
+			padding: 15px 15px;
+			border-radius: 0px;
+			background-color: #ffffff;
+		}
+		
+		.nav-dropdown-content:hover a:hover, .nav-dropdown-content:hover a:active {
+			background-color: #dfdfdf;
+		}	
+	}
+
+.nav-dropdown:hover .nav-dropdown-content {
+    display: block !important;
+}
+
+/* Main Navigation toggle */
+
+.nav-toggle {
+	float:right;
+	margin: 10px 0 0 0;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	border: none;
+	text-decoration: none;
+}
+	
+	@media screen and (min-width: 760px) {
+		.nav-toggle-container {
+			display: none !important;
+		}
+	}
+
+.nav-toggle div {
+	width: 30px;
+	height: 30px;
+	position: relative;
+}
+
+.nav-toggle span {
+    width: 30px;
+	height: 3px;
+	background: #ea1c0a;
+	position: absolute;
+	border-radius: 4px;
+	-webkit-transition: -webkit-transform 0.5s ease-in-out, top 0.25s ease-in-out 0.5s, opacity 0.25s ease-in-out 0.5s, background 0.5s linear;
+    -moz-transition: -moz-transform 0.5s ease-in-out, top 0.25s ease-in-out 0.5s, opacity 0.25s ease-in-out 0.5s, background 0.5s linear;
+    transition: transform 0.5s ease-in-out, top 0.25s ease-in-out 0.5s, opacity 0.25s ease-in-out 0.5s, background 0.5s linear;
+	-webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    transform-origin: center;
+}
+.nav-toggle span.top {
+	top: 0px;
+}
+.nav-toggle span.middle {
+	top: 10px;
+}
+.nav-toggle span.bottom {
+	top: 20px;
+}
+
+.nav-toggle.menu-is-active span {
+	background: #ea1c0a;
+	-webkit-transition: -webkit-transform 0.5s ease-in-out 0.3s, top 0.25s ease-in-out, opacity 0.25s ease-in-out, background 0.5s linear;
+    -moz-transition: -moz-transform 0.5s ease-in-out 0.3s, top 0.25s ease-in-out, opacity 0.25s ease-in-out, background 0.5s linear;
+    transition: transform 0.5s ease-in-out 0.3s, top 0.25s ease-in-out, opacity 0.25s ease-in-out, background 0.5s linear;
+}
+.nav-toggle.menu-is-active span.top, #toggle-menu.menu-is-active span.middle {
+	top: 10px;
+	-webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+.nav-toggle.menu-is-active span.middle {
+	opacity: 0;
+}
+.nav-toggle.menu-is-active span.bottom {
+	top: 10px;
+	-webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    transform: rotate(225deg);
+}
+
+/* Footer Navigation */
+
+.footer-nav ul {
+	float:left;
+	padding: 0;
+	margin: 0;
+	list-style:none;
+	width: 100%;
+}
+
+.footer-nav li {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+.footer-nav a:link, .footer-nav a:visited {
+	float:left;
+	margin: 0 10px 5px 0;
+	padding: 10px 20px;
+	border:none;
+	background-color: #8c8c8c;
+	color: #ffffff;
+	font-size: 1.0em;
+	line-height: 1em;
+	border-radius: 2em;
+}
+
+.footer-nav a:hover, .footer-nav a:active {
+	background-color: #b0b0b0;
+	color: #ffffff;
+}
+
+/*------------------------------------------
+13. Time Line Elements
+------------------------------------------*/
+
+.timeline-date {
+	color: #8c8c8c;
+	font-size: 0.93em;
+}
+
+.timeline-quote {
+	font-size: 1.2em;
+	font-style: italic;
+}
+
+.timeline-quote-reference {
+	float:right;
+	text-align: right;
+	font-style: normal;
+	font-size: 0.86em;
+}
+
+.cd-timeline-content img {
+	float:left;
+	max-width: 100%;
+	height: auto;
+	margin: 0 10px 10px 0;
+}
+
+/*------------------------------------------
+13. Time Line Pop-Up
+------------------------------------------*/
+
+#lean_overlay {
+    position: fixed;
+    z-index:9999;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #333333;
+    display: none;
+	padding: 0;
+}
+
+.pop-up-container {
+	position:relative;
+	display:none;
+	background-color: #ffffff;
+	font-weight: normal;
+	max-width: 80%;
+	padding: 20px;
+	z-index: 1;
+	}
+
+	@media screen and (min-width: 760px) {
+		.pop-up-container {
+			width: 740px;
+			border-radius: 8px;
+		}
+	}
+
+
+.pop-up-header {
+	float:left;
+	width: 100%;
+	padding: 15px 0;
+	margin: 0 0;
+} *html .pop-up-header {display:inline;}
+
+.pop-up-content {
+	float:left;
+	width: 100%;
+	margin: 10px 0 10px 0;
+	text-align: left;
+} *html .pop-up-content {display:inline;}
+
+/*------------------------------------------
+CSS END
+------------------------------------------*/

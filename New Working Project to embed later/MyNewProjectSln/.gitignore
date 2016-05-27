@@ -1,0 +1,13 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+/MyNewProject/obj/Debug
+node_modules
+/WebComponents/buildlocal
+/WebComponents/buildSP
+/**/*.wsp
+/**/.suo
+/MyNewProject/pkg
+/MyNewProject/pkgobj
+/MyNewProject/bin
+/MyNewProject/obj

@@ -1,0 +1,21 @@
+<script type="text/javascript">
+(function(){
+    "use strict"
+    var css,script;
+    
+    css = document.createElement('link');
+    css.rel = "stylesheet";
+    css.type = "text/css";
+    css.href = _spPageContextInfo.siteAbsoluteUrl + "/SBFrameWork/MyNewPart/css/webpart.css";
+    document.write(css.outerHTML);
+    
+    script = document.createElement('script');
+    script.src = _spPageContextInfo.siteAbsoluteUrl + '/SBFrameWork/MyNewPart/js/component.js';
+    document.write(script.outerHTML);
+    
+    script = document.createElement('script');
+    script.src = _spPageContextInfo.siteAbsoluteUrl + '/SBFrameWork/MyNewPart/js/component.js';
+    document.write(script.outerHTML);
+    
+})()
+</script>

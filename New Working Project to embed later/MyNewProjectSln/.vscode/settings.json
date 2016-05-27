@@ -1,0 +1,32 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.DS_Store": true,
+        "node_modules": true,
+   //     "**/bs-config.json": true,
+        "**/jsconfig.json": true,
+        
+        //Contains the outer wrappings of the test HTML for the part and te local test index.html        
+       // "**/.container": true,
+
+        //I use these for building the scaffolding for local and sharepoint bundles of the source        
+ //       "**/buildSP": true,
+//        "**/buildlocal": true,
+        //Hide useless parts of the VS project 
+        "**/bin": true,
+        "**/obj": true,
+        "**/pkg": true,
+        "**/pkgobj": true,
+        "**/.vs": true,
+
+        //UnHide this one when you want to look at the built SP project
+        //"**/MyNewProject":true,
+        
+        //dummy end one to shut up lint
+        "":false
+    }
+}
