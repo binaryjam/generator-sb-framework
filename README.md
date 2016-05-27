@@ -88,7 +88,7 @@ Once you created this package, load the folder in VSCode,  I wrote this with VSC
 I use the installed VSCode packages : jshint and beautify PrettyfyJson.  You dont need them as the bundler does most of this, but
 jshint is worth installing.  It's merits over eshint I leave to you.
 
-The VSCode setting "filesexclude" hides most of the folders from view.  Edit the settings.json to hide/undide stuff you want to see.
+The VSCode setting "files.exclude" hides most of the folders from view.  Edit the settings.json to hide/undide stuff you want to see.
 
 You edit your html js in the Webcomponents/src folder. You may not like the folder structure but this is v1, perhaps we can lose the WebComponents Parent and jsut rename it Src or something,
 but today this is what it is.

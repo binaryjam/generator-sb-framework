@@ -1,7 +1,7 @@
 {
   "name": "generator-sb-framework",
-  "version": "0.0.0",
-  "description": "a test generator",
+  "version": "1.0.0",
+  "description": "Yeoman generator to create aSharePoint Declarative Sandbox solution. This project is split into multiple directory structures that should allow a we developer to create a simple WebPart using the usual web stack tools, like VS Code, gulp, browser-sync to create a SharePoint sandbox WSP.",
   "homepage": "https://github.com/binaryjam/generator-sb-framework",
   "author": {
     "name": "Simon Tocker",
