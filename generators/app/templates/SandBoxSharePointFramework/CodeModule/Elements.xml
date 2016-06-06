@@ -2,10 +2,19 @@
 <Elements 
   xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="CodeModule">
-    <File ReplaceContent="TRUE" Path="CodeModule\bundle.css" Url="SBFrameWork/<%= webPartName %>/bundle.css"/>
+
+    <File ReplaceContent="TRUE" Path="CodeModule\css\webpart.css" Url="SBFrameWork/<%= webPartName %>/css/webpart.css"/>
     <File ReplaceContent="TRUE" Path="CodeModule\images\asteroids.jpg" Url="SBFrameWork/<%= webPartName %>/images/asteroids.jpg"/>
-    <File ReplaceContent="TRUE" Path="CodeModule\bundle.js" Url="SBFrameWork/<%= webPartName %>/bundle.js"/>
     <File ReplaceContent="TRUE" Path="CodeModule\images\galaxy.jpg" Url="SBFrameWork/<%= webPartName %>/images/galaxy.jpg"/>
-    <File ReplaceContent="TRUE" Path="CodeModule\loader.htm" Url="SBFrameWork/<%= webPartName %>/loader.htm"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\js\pages-main.js" Url="SBFrameWork/<%= webPartName %>/js/pages-main.js"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\js\part-main.js" Url="SBFrameWork/<%= webPartName %>/js/part-main.js"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\libs\jquery.leanModal.min.js" Url="SBFrameWork/<%= webPartName %>/libs/jquery.leanModal.min.js"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\libs\jquery.min.js" Url="SBFrameWork/<%= webPartName %>/libs/jquery.min.js"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\libs\jquery.SPServices-0.7.2.min.js" Url="SBFrameWork/<%= webPartName %>/libs/jquery.SPServices-0.7.2.min.js"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\libs\knockout-2.2.1.js" Url="SBFrameWork/<%= webPartName %>/libs/knockout-2.2.1.js"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\libs\modernizr.min.js" Url="SBFrameWork/<%= webPartName %>/libs/modernizr.min.js"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\libs\moment.min.js" Url="SBFrameWork/<%= webPartName %>/libs/moment.min.js"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\webpart\webpartcontent.htm" Url="SBFrameWork/<%= webPartName %>/webpart/webpartcontent.htm"/>
+    <File ReplaceContent="TRUE" Path="CodeModule\pages\Stream.html" Url="SBFrameWork/<%= webPartName %>/pages/Stream.html"/>    
   </Module>
 </Elements>

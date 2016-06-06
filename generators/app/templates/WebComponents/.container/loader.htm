@@ -1,10 +1,15 @@
 <script type="text/javascript">
-    var css = document.createElement('link');
+    "use strict"
+    var css, script;
+    
+    css = document.createElement('link');
     css.rel = "stylesheet";
     css.type = "text/css";
-    css.href = _spPageContextInfo.siteAbsoluteUrl + "/SBFrameWork/<%=webPartName%>/bundle.css";
+    css.href = _spPageContextInfo.siteAbsoluteUrl + "/SBFrameWork/<%=projectName%>/css/webpart.css";
     document.write(css.outerHTML);
-    var script = document.createElement('script');
-    script.src = _spPageContextInfo.siteAbsoluteUrl + '/SBFrameWork/<%=webPartName%>/bundle.js';
+    
+    script = document.createElement('script');
+    script.src = _spPageContextInfo.siteAbsoluteUrl + '/SBFrameWork/<%=projectName%>/js/part-main.js';
     document.write(script.outerHTML);
+
 </script>

@@ -1,9 +1,0 @@
-{
-    "port": 8000,
-    "files": [
-        "./WebComponents/buildlocal/**/*.*"
-    ],
-    "server": {
-        "baseDir": "./WebComponents/buildlocal"
-    }
-}
