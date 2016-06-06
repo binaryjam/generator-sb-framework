@@ -110,30 +110,29 @@ module.exports = yeoman.Base.extend({
         this.fs.copyTpl(this.templatePath("WebComponents/.container"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/.container'), templateModel);
 
         this.fs.copy(this.templatePath("WebComponents/buildSP"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/buildSP'), true);
-        this.fs.copyTpl(this.templatePath("WebComponents/src/webpartcontent.htm"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/webpartcontent.htm'), templateModel);
+        this.fs.copyTpl(this.templatePath("WebComponents/src/webpart/webpartcontent.htm"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/webpart/webpartcontent.htm'), templateModel);
         this.fs.copy(this.templatePath("WebComponents/src/css"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/css'), true);
         this.fs.copy(this.templatePath("WebComponents/src/images"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/images'), true);
         this.fs.copyTpl(this.templatePath("WebComponents/src/js"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/js'), templateModel);
-
+        this.fs.copyTpl(this.templatePath("WebComponents/src/libs"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/libs'), templateModel);
+        this.fs.copyTpl(this.templatePath("WebComponents/src/pages"), this.destinationPath(this.props.projectName + 'Sln/WebComponents/src/pages'), templateModel);
+/*
         this.fs.copyTpl(this.templatePath("WebComponents/buildlocal/loader.htm"),
             this.destinationPath(this.props.projectName + 'Sln/WebComponents/buildlocal/loader.htm'),
             templateModel);
-
+*/
         this.fs.copy(this.templatePath("WebComponents/buildlocal/SBFrameWork/SandboxFrameworkPart"),
             this.destinationPath(this.props.projectName + 'Sln/WebComponents/buildlocal/' + this.props.projectName + '/' +
                 this.props.webPartName), true);
 
         //CodeModule
         this.fs.copy(
-            this.templatePath("SandBoxSharePointFramework/CodeModule/images"),
-            this.destinationPath(this.props.projectName + 'Sln/' + this.props.projectName + "/CodeModule/images"),
+            this.templatePath("SandBoxSharePointFramework/CodeModule/{images,js,css,libs,pages}"),
+            this.destinationPath(this.props.projectName + 'Sln/' + this.props.projectName + "/CodeModule/"),
             true);
-        this.fs.copy(
-            this.templatePath("SandBoxSharePointFramework/CodeModule/bundle.css"),
-            this.destinationPath(this.props.projectName + 'Sln/' + this.props.projectName + "/CodeModule/bundle.css"),
-            true);
+            
         this.fs.copyTpl(
-            this.templatePath('SandBoxSharePointFramework/CodeModule/{bundle.js,Elements.xml,loader.htm,SharePointProjectItem.spdata}'),
+            this.templatePath('SandBoxSharePointFramework/CodeModule/{Elements.xml,SharePointProjectItem.spdata}'),
             this.destinationPath(this.props.projectName + 'Sln/' + this.props.projectName + '/CodeModule/'),
             templateModel
         );

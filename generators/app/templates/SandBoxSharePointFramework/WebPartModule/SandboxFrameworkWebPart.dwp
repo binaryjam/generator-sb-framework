@@ -33,7 +33,7 @@
       <p>    Change this to have a content link insted of this text. </p> 
       <p>    Point it at &quot;
       <script>document.write(_spPageContextInfo.siteAbsoluteUrl);</script>
-      /SBFrameWork/<%= webPartName %>/loader.htm&quot;</p>
+      /SBFrameWork/<%= webPartName %>/webpart/webpartcontent.htm&quot;</p>
     ]]>
   </Content>
   <PartStorage xmlns="http://schemas.microsoft.com/WebPart/v2/ContentEditor" />
