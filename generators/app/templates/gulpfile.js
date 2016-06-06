@@ -28,13 +28,13 @@ gulp.task('bothBuild', gulpSequence(['spBuild', 'localBuild']));
 //dependancy tree got out of control so switch to sequence handler instead
 gulp.task('localBuild', gulpSequence(
     'cleanlocal',
-    ['buildhtmlPartLoader','buildhtmlindex', 'buildTheRest'] //'bundlejslocal',
+    ['buildhtmlPartLoader', 'buildhtmlindex', 'buildTheRest'] //'bundlejslocal',
 ));
 
 gulp.task('spBuild', gulpSequence(
     'cleanspbuild',
     'cleanspmodule',
-    [ 'buildhtmlsp','buildhtmlsp3'],  //'buildcsssp', 'buildjssp', 'buildimgsp',
+    ['buildhtmlsp', 'buildhtmlsp3'],  //'buildcsssp', 'buildjssp', 'buildimgsp',
     ['packageXmlFiles'],
     ['packageElements', 'packagespdata'],
     'packagecsproj',
@@ -84,7 +84,7 @@ gulp.task('buildhtmlsp', function () {
 });
 
 gulp.task('buildhtmlsp3', function () {
-    return gulp.src(['./WebComponents/src/**','!./WebComponents/src/webpart{,/**}'])  // '!./**/css{,/**}','!./**/js{,/**}','!./**/images{,/**}',
+    return gulp.src(['./WebComponents/src/**', '!./WebComponents/src/webpart{,/**}'])  // '!./**/css{,/**}','!./**/js{,/**}','!./**/images{,/**}',
         .pipe(gulp.dest('./WebComponents/buildSP/'));
 });
 
@@ -126,9 +126,9 @@ gulp.task('packageElements', function () {
                         "Path": path
                     })
                     .attr({
-                        "Url": elementFiles[j].Url.replace(/\\/g,"/")
+                        "Url": elementFiles[j].Url.replace(/\\/g, "/")
                     });
-                    console.log( elementFiles[j].Url.replace(/\\/g,"/") );
+                console.log(elementFiles[j].Url.replace(/\\/g, "/"));
             }
 
             return xml;
@@ -148,13 +148,14 @@ gulp.task('packagespdata', function () {
             }
             var module = xml.get('//xmlns:Files', "http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel");
             for (var j = 0; j < elementFiles.length; j++) {
-
+                var folder = elementFiles[j].name.lastIndexOf("\\");
+                folder = elementFiles[j].name.substring(0, folder);
                 module.node('ProjectItemFile')
                     .attr({
                         "Source": elementFiles[j].srcprefix + elementFiles[j].name
                     })
                     .attr({
-                        "Target": elementFiles[j].path
+                        "Target": elementFiles[j].path + folder
                     })
                     .attr({
                         "Type": "ElementFile"
@@ -335,6 +336,6 @@ gulp.task('bundlejslocal', function () {
 
 
 gulp.task('buildTheRest', function () {
-    return gulp.src(['./WebComponents/src/**',  '!./WebComponents/src/webpart/webpartcontent.htm'])  //'!./**/js{,/**}','!./**/css{,/**}',
+    return gulp.src(['./WebComponents/src/**', '!./WebComponents/src/webpart/webpartcontent.htm'])  //'!./**/js{,/**}','!./**/css{,/**}',
         .pipe(gulp.dest('./WebComponents/buildlocal/SBFrameWork/<%=projectName%>'));
 });
