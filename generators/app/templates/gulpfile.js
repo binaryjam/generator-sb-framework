@@ -57,7 +57,7 @@ gulp.task('cleanspbuild', function () {
 
 
 gulp.task('cleanspmodule', function () {
-    return del(['./MyNewProject/CodeModule/**/*', '!./MyNewProject/CodeModule/Elements.xml', '!./MyNewProject/CodeModule/SharePointProjectItem.spdata']);//**/*.{jpeg,gif,jpg,png,css,js,htm,html}']);
+    return del(['./<%=projectName%>/CodeModule/**/*', '!./<%=projectName%>/CodeModule/Elements.xml', '!./<%=projectName%>/CodeModule/SharePointProjectItem.spdata']);//**/*.{jpeg,gif,jpg,png,css,js,htm,html}']);
 });
 
 /* No, Naughty bad bundling!!  Do it properly later when you have sorted the basics 
@@ -93,7 +93,7 @@ var elementFiles = [];
 gulp.task('packageXmlFiles', function () {
     return gulp.src(['./WebComponents/buildSP/**/*.*'])
         .pipe(debug())
-        .pipe(gulp.dest('./MyNewProject/CodeModule'))
+        .pipe(gulp.dest('./<%=projectName%>/CodeModule'))
         .pipe(gulpfn(function (file) {
             var fname = file.path.substring(file.base.length + 1);
             var obj = {
@@ -109,7 +109,7 @@ gulp.task('packageXmlFiles', function () {
 
 
 gulp.task('packageElements', function () {
-    return gulp.src("./MyNewProject/CodeModule/Elements.xml")
+    return gulp.src("./<%=projectName%>/CodeModule/Elements.xml")
         .pipe(xeditor(function (xml) {
             var node = xml.find('//xmlns:File', 'http://schemas.microsoft.com/sharepoint/');
             for (var i = 0; i < node.length; i++) {
@@ -133,14 +133,14 @@ gulp.task('packageElements', function () {
 
             return xml;
         }))
-        .pipe(gulp.dest("./MyNewProject/CodeModule/", {
+        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
             "overwrite": true
         }));
 });
 
 gulp.task('packagespdata', function () {
     //Clear out all the File objects in the XML
-    return gulp.src("./MyNewProject/CodeModule/SharePointProjectItem.spdata")
+    return gulp.src("./<%=projectName%>/CodeModule/SharePointProjectItem.spdata")
         .pipe(xeditor(function (xml) {
             var node = xml.find('//xmlns:ProjectItemFile[@Type="ElementFile"]', "http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel");
             for (var i = 0; i < node.length; i++) {
@@ -165,7 +165,7 @@ gulp.task('packagespdata', function () {
 
             return xml;
         }))
-        .pipe(gulp.dest("./MyNewProject/CodeModule/", {
+        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
             "overwrite": true
         }));
 });
@@ -173,7 +173,7 @@ gulp.task('packagespdata', function () {
 gulp.task('packagecsproj', function () {
 
     //Clear out all the File objects in the XML
-    return gulp.src("./MyNewProject/MyNewProject.csproj")
+    return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
         .pipe(xeditor(function (xml) {
             var node = xml.get('//xmlns:ItemGroup[xmlns:Content]', "http://schemas.microsoft.com/developer/msbuild/2003");
             if (typeof node !== "undefined") {
@@ -235,29 +235,29 @@ gulp.task('packagecsproj', function () {
             }
             return xml;
         }))
-        .pipe(gulp.dest("./MyNewProject/", {
+        .pipe(gulp.dest("./<%=projectName%>/", {
             "overwrite": true
         }));
 });
 
 gulp.task('prettify1', function () {
-    return gulp.src("./MyNewProject/CodeModule/Elements.xml")
+    return gulp.src("./<%=projectName%>/CodeModule/Elements.xml")
         .pipe(prettyData({
             type: 'prettify'
         }))
-        .pipe(gulp.dest("./MyNewProject/CodeModule/", {
+        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
             "overwrite": true
         }));
 });
 
 gulp.task('prettify2', function () {
-    return gulp.src("./MyNewProject/CodeModule/SharePointProjectItem.spdata")
+    return gulp.src("./<%=projectName%>/CodeModule/SharePointProjectItem.spdata")
         .pipe(rename("SharePointProjectItem.spdata.xml"))
         .pipe(prettyData({
             type: 'prettify'
         }))
         .pipe(rename("SharePointProjectItem.spdata"))
-        .pipe(gulp.dest("./MyNewProject/CodeModule/", {
+        .pipe(gulp.dest("./<%=projectName%>/CodeModule/", {
             "overwrite": true
         }));
 });
@@ -265,20 +265,20 @@ gulp.task('prettify2', function () {
 //If we get problems with unidentified package items then delete the .suo files in a new task item
 
 gulp.task('prettify3', function () {
-    return gulp.src("./MyNewProject/MyNewProject.csproj")
-        .pipe(rename("MyNewProject.csproj.xml"))
+    return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
+        .pipe(rename("<%=projectName%>.csproj.xml"))
         .pipe(prettyData({
             type: 'prettify'
         }))
-        .pipe(rename("MyNewProject.csproj"))
-        .pipe(gulp.dest("./MyNewProject/", {
+        .pipe(rename("<%=projectName%>.csproj"))
+        .pipe(gulp.dest("./<%=projectName%>/", {
             "overwrite": true
         }));
 });
 
 
 gulp.task('msbuild', function () {
-    return gulp.src("./MyNewProject/MyNewProject.csproj")
+    return gulp.src("./<%=projectName%>/<%=projectName%>.csproj")
         .pipe(msbuild({
             targets: ['Package'],
             toolsVersion: 12.0,
