@@ -14,7 +14,7 @@
     <ProjectItemFile Source="libs\knockout-2.2.1.js" Target="CodeModule\" Type="ElementFile"/>
     <ProjectItemFile Source="libs\modernizr.min.js" Target="CodeModule\" Type="ElementFile"/>
     <ProjectItemFile Source="libs\moment.min.js" Target="CodeModule\" Type="ElementFile"/>
-    <ProjectItemFile Source="pages\Stream.html" Target="CodeModule\" Type="ElementFile"/>
+    <ProjectItemFile Source="pages\index.html" Target="CodeModule\" Type="ElementFile"/>
     <ProjectItemFile Source="webpart\webpartcontent.htm" Target="CodeModule\" Type="ElementFile"/>
   </Files>
 </ProjectItem>

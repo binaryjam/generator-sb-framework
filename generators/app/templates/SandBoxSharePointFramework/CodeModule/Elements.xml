@@ -15,6 +15,6 @@
     <File ReplaceContent="TRUE" Path="CodeModule\libs\modernizr.min.js" Url="SBFrameWork/<%= webPartName %>/libs/modernizr.min.js"/>
     <File ReplaceContent="TRUE" Path="CodeModule\libs\moment.min.js" Url="SBFrameWork/<%= webPartName %>/libs/moment.min.js"/>
     <File ReplaceContent="TRUE" Path="CodeModule\webpart\webpartcontent.htm" Url="SBFrameWork/<%= webPartName %>/webpart/webpartcontent.htm"/>
-    <File ReplaceContent="TRUE" Path="CodeModule\pages\Stream.html" Url="SBFrameWork/<%= webPartName %>/pages/Stream.html"/>    
+    <File ReplaceContent="TRUE" Path="CodeModule\pages\index.html" Url="SBFrameWork/<%= webPartName %>/pages/index.html"/>    
   </Module>
 </Elements>

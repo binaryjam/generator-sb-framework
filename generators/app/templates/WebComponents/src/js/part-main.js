@@ -7,6 +7,6 @@
         sbfrmcomponent.createImage();
     }
 
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("load", init);
 
 })();
