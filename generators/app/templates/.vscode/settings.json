@@ -7,7 +7,7 @@
         "**/.svn": true,
         "**/.DS_Store": true,
         "node_modules": true,
-        "**/bs-config.json": true,
+        "**/bs-config.js": true,
         "**/jsconfig.json": true,
         
         //Contains the outer wrappings of the test HTML for the part and te local test index.html        

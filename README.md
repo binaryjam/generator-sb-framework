@@ -100,7 +100,7 @@ npm run dev
 ```  
 
 This will start the lite-server (https://github.com/johnpapa/lite-server), that will monitor the files in the local build
-and run a web server and brower-sync.  The settings for which are in the (hidden) bs-config.json.  Go change them if you want.
+and run a web server and brower-sync.  The settings for which are in the (hidden) bs-config.js.  Go change them if you want.
 
 To build the project, and you need to each time you edit and want to see a change (bundling/browsersync). hit CTRL-B
 and it will run the gulp tasks you need.
