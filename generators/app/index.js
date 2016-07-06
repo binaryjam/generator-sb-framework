@@ -91,7 +91,7 @@ module.exports = yeoman.Base.extend({
             projectName: this.props.projectName
         };
 
-        this.fs.copy(this.templatePath("bs-config.json"),
+        this.fs.copy(this.templatePath("bs-config.js"),
             this.destinationPath(this.props.projectName + 'Sln/bs-config.js'), true);
         this.fs.copy(this.templatePath("README.md"),
             this.destinationPath(this.props.projectName + 'Sln/README.md'), true);
