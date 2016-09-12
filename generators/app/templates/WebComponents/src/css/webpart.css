@@ -1,3 +1,8 @@
+/*
+    Its more efficient to have this in the webpart.htm one less file to load.
+    if you do that and remove this, then ensure that the .container files 
+    (loader.htm and localtop.htm arefixed accordingly) 
+*/
 .style1{
     color:#ff0000;
 }

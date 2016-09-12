@@ -101,7 +101,7 @@ module.exports = yeoman.Base.extend({
         this.fs.copyTpl(this.templatePath(".vscode"), this.destinationPath(this.props.projectName + 'Sln/.vscode'), templateModel);
 
         this.fs.copyTpl(
-            this.templatePath('{package.json,gulpfile.js,.gitignore}'),
+            this.templatePath('{package.json,gulpfile.js,.gitignore,bower.json}'),
             this.destinationPath(this.props.projectName + 'Sln/'),
             templateModel
         );

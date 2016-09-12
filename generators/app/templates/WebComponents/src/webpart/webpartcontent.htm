@@ -1,3 +1,17 @@
+<!--
+It is expected that these libraries are loaded as part of the underlaying page
+If you require your webpart to load these things you have to handle that yourself,
+When testing check the localtop.htm file as this autoloads these for local testing.
+
+If you have more or other libs in your masterpage then add them to the localtop.htm
+so the local test framework can work.  Add it in bower as well.
+
+<script src="/bower_components/jQuery/dist/jquery.min.js"></script>
+<script src="/bower_components/knockout/dist/knockout.js"></script>
+<script src="/bower_components/spservices/jquery.SPServices-0.7.2.js"></script>
+<script src="/bower_components/jStorage/jstorage.min.js"></script>
+-->
+
 <div id="<%= webPartName %>">
     <span id="galaxyimg"></span>
 </div>
