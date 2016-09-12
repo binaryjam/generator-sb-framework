@@ -1,10 +1,7 @@
 {
-  "name": "ExtendedPersonViewer",
+  "name": "<%=projectName%>",
   "description": "",
   "main": "index.js",
-  "authors": [
-    "Simon Tocker <simon.tocker@eon.com>"
-  ],
   "license": "ISC",
   "homepage": "",
   "ignore": [
@@ -15,9 +12,9 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "3.3.6",
-    "jquery": "3.0.0",
-    "spservices": "0.7.2",
-    "knockout-min": "https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js#undefined"
+    "jQuery": "^3.0.0",
+    "knockout": "^3.4.0",
+    "spservices": "^0.7.2",
+    "jStorage": "jstorage#^0.4.12"
   }
 }

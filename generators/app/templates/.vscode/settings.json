@@ -7,12 +7,11 @@
         "**/.svn": true,
         "**/.DS_Store": true,
         "node_modules": true,
+        "bower_components": true,
         "**/bs-config.js": true,
         "**/jsconfig.json": true,
-        
         //Contains the outer wrappings of the test HTML for the part and te local test index.html        
         "**/.container": true,
-
         //I use these for building the scaffolding for local and sharepoint bundles of the source        
         "**/buildSP": true,
         "**/buildlocal": true,
@@ -22,11 +21,9 @@
         "**/pkg": true,
         "**/pkgobj": true,
         "**/.vs": true,
-
         //UnHide this one when you want to look at the built SP project
-        "**/<%=projectName%>":true,
-        
+        "<%=projectName%>": true,
         //dummy end one to shut up lint
-        "":false
+        "": false
     }
 }

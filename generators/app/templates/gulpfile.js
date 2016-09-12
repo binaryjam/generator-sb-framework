@@ -19,6 +19,35 @@ if (!String.prototype.startsWith) {
     };
 }
 
+
+
+
+var spDest = '\\\\[SERVERNAME]\\davwwwroot\\sites\\[~sitecollection]\\SBFrameWork\\<%=projectName%>\\';
+
+gulp.task('quicklive', ['spBuild'], function () {
+    gulp.src([codeRoot + '/js/*.*'])
+        .pipe(debug({
+            title: 'file:'
+        }))
+        .pipe(gulp.dest(spDest + 'js\\'));
+    gulp.src([codeRoot + '/webpart/*.*'])
+        .pipe(debug({
+            title: 'file:'
+        }))
+        .pipe(gulp.dest(spDest + 'webpart\\'));
+    gulp.src([codeRoot + '/css/*.*'])
+        .pipe(debug({
+            title: 'file:'
+        }))
+        .pipe(gulp.dest(spDest + 'images\\'));
+            gulp.src([codeRoot + '/images/*.*'])
+        .pipe(debug({
+            title: 'file:'
+        }))
+        .pipe(gulp.dest(spDest + 'images\\'));
+});
+
+
 gulp.task('.BUILD', ['bothBuild']);
 
 gulp.task('.BUILDWSP', gulpSequence('spBuild', 'msbuild'));
