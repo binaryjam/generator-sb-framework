@@ -3,6 +3,9 @@
 This project is split into multiple directory structures that should allow a we developer to create a simple WebPart using
 the usual web stack tools, like VS Code, gulp, browser-sync to create a SharePoint sandbox WSP.
 
+Im Deprecating this, as changes in the libxml made it impossible to build, VS2017 does not include sandbox solutions as a project and this model is being superceded by SPFX, just really really slowly.  I recommend Looking to Sympraxis People Marc and Julie (Julie has a set of articles on toolchain) as to how they do this, it's more simple than this and isnt a package builder, but it will get you started faster than this.
+
+
 It is for windows users,  because it relies on MSBuild , Visual Studio and the Office Dev SDK having been installed to enable
 the gulp file to MSbuild the WSP file for you.
 
